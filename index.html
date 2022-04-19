@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Web</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/calculadoras.css">
+</head>
+
+<body>
+    <div class="contaienr">
+        <main>
+            <section>
+                <article>
+                    <form action="" class="control">
+                        <input type="radio" name="botones" id="button_1" value="1">
+                        <label for="button_1" id="button_one">Calculadora</label>
+                        <input type="radio" name="botones" id="button_2" value="2">
+                        <label for="button_2" id="button_two">Calorias</label>
+                    </form>
+                    <div id="calcula"> <!-- calculadora -->
+                        <form action="" name="calculadora">
+                            <input type="textfield" name="resultado" value="" id="resultados" readonly>
+
+                            <input type="button" value="7" id="7" class="buttons">
+                            <input type="button" value="8" id="8" class="buttons">
+                            <input type="button" value="9" id="9" class="buttons">
+                            <input type="button" value="/" id="divicion" class="buttons">
+                            
+                            <input type="button" value="4" id="4" class="buttons">
+                            <input type="button" value="5" id="5" class="buttons">
+                            <input type="button" value="6" id="6" class="buttons">
+                            <input type="button" value="x" id="multiplicacion" class="buttons">
+                            
+                            <input type="button" value="1" id="1" class="buttons">
+                            <input type="button" value="2" id="2" class="buttons">
+                            <input type="button" value="3" id="3" class="buttons">
+                            <input type="button" value="-" id="resta" class="buttons">
+                            
+                            <input type="button" value="." id="coma" class="buttons">
+                            <input type="button" value="0" id="0" class="buttons">
+                            <input type="button" value="+" id="suma" class="buttons">
+
+                            <input type="reset" value="C" class="buttons">
+                            <input type="button" value="=" id="igual" class="buttons">                            
+                        </form>
+                    </div>
+                    <div id="item_2"> <!-- calculadora de calorias -->
+                        <form action="" name="calorias" class="calorias">
+                            
+                            <label for="genero" id="genero-label">Selecciona tu sexo de nacimiento:</label>
+                            <select name="genero" id="genero">
+                                <option value="1">Hombre</option>
+                                <option value="2">Mujer</option>
+                            </select>
+                            
+                            <label for="peso" class="label-number">Pon tu peso</label>
+                            <input type="number" name="" id="peso" min="20" value="" max="150" placeholder="61 kg">
+
+                            <label for="altura" class="label-number">Pon tu altura</label>
+                            <input type="number" name="" id="altura" value="" min="100" max="220" placeholder="174 cm">
+
+                            <label for="edad" class="label-number">Pon tu edad</label>
+                            <input type="number" name="" id="edad" value="" min="1" max="99" placeholder="27">
+                            
+                            <input type="radio" name="actividadFisic" id="actividad_1">
+                            <label for="actividad_1" class="label_actividad">No hago ejercicios</label>
+                            
+                            <input type="radio" name="actividadFisic" id="actividad_2">
+                            <label for="actividad_2" class="label_actividad">Me ejercito entre 1 y 3 veces por semana</label>
+                            
+                            <input type="radio" name="actividadFisic" id="actividad_3">
+                            <label for="actividad_3" class="label_actividad">Me ejercito entre 3 y 5 veces por semana</label>
+                            
+                            <input type="radio" name="actividadFisic" id="actividad_4">
+                            <label for="actividad_4" class="label_actividad">Me ejercito entre 6 y 7 veces por semana</label>
+                            
+                            <input type="radio" name="actividadFisic" id="actividad_5">
+                            <label for="actividad_5" class="label_actividad">Entreno de manera intensa 2 veces al dia</label>
+
+                            <input type="button" value="Enviar" id="enviar">
+                            <input type="text" name="resulta" id="resulta" value="" readonly>
+                            <input type="reset" value="Borrar" id="reset">
+                        </form>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <div id="git-content-footer">
+                <a id="personalLink" class="personalLinks" href="https://github.com/Mangostar1" target="_blank">
+                    <img src="./icons/github-svgrepo-com.svg" class="github" id="github" title="GitHub">
+                </a>
+            </div>
+            <div id="linkedin-content-footer">
+                <a href="https://www.linkedin.com/in/omar-zavala-ugarte-7b5036149/" class="personalLinks" target="_blank">
+                    <img src="./icons/linkedin-svgrepo-com.svg" class="linkedin" id="linkedin" title="Linkedin">
+                </a>
+            </div>
+            <div id="email-content-footer">
+                <a href="mailto:influencia.x.94@gmail.com" class="personalLinks" target="_blank">
+                    <img src="./icons/email-svgrepo-com.svg" class="email" id="email" title="e-mail">
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="/js/Calculadora.js"></script>
+<script src="/js/Cambio_calculadoras.js"></script>
+<script src="/js/calorias.js"></script>
+</html>
