@@ -1,6 +1,6 @@
 import './Calorias.css';
 
-//logica de la calculadora de calorias
+/* //logica de la calculadora de calorias
 
 const envia = document.getElementById("enviar");
 let respuesta = document.getElementById("resulta");
@@ -43,7 +43,7 @@ envia.onclick = function calculo() {
         }
         respuesta.value = mujer;
     }
-}
+} */
 
 export default function Calorias(){
     return(
