@@ -1,11 +1,10 @@
 import './Calorias.css';
 
-/* //logica de la calculadora de calorias
+export default function Calorias(){
 
-const envia = document.getElementById("enviar");
-let respuesta = document.getElementById("resulta");
-
-envia.onclick = function calculo() {
+    //logica de la calculadora de calorias
+function calculo() {
+    let respuesta = document.getElementById("resulta");
     let peso = document.getElementById("peso").value;
     let altura = document.getElementById("altura").value;
     let edad = document.getElementById("edad").value;
@@ -43,9 +42,8 @@ envia.onclick = function calculo() {
         }
         respuesta.value = mujer;
     }
-} */
+}
 
-export default function Calorias(){
     return(
         <div id="item_2">
             <form action="" name="calorias" className="calorias">
@@ -80,7 +78,7 @@ export default function Calorias(){
                 <input type="radio" name="actividadFisic" id="actividad_5" />
                 <label htmlFor="actividad_5" className="label_actividad">Entreno de manera intensa 2 veces al dia</label>
 
-                <input type="button" defaultValue="Enviar" id="enviar" />
+                <input type="button" defaultValue="Enviar" id="enviar" onClick={calculo}/>
                 <input type="text" name="resulta" id="resulta" defaultValue="" readOnly /> {/* readonly de html en JSX es readOnly */}
                 <input type="reset" defaultValue="Borrar" id="reset" />
             </form>
