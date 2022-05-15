@@ -15,7 +15,7 @@
     width: 320px;
     height: auto;
 
-    /* display felx declarado en js*/
+    display: flex;
     flex-flow: row wrap;
 }
 

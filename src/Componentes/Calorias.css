@@ -13,6 +13,7 @@
     background-color: var(--color3);    
     width: 550px;
     height: auto;
+    display: flex;
 
     /* declarado como flex en el JS */
     
