@@ -70,7 +70,7 @@ export default function Calculadora(){
     }
 
     return(
-        <div>
+        <div id="calcula">
             <form action="" name="calculadora">
                 <input type="textfield" name="resultado" defaultValue="" id="resultados" readOnly />
 
