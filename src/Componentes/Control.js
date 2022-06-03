@@ -11,14 +11,12 @@ export default class Control extends Component {
     }
 //logica de los botones
     One = (props) => {    
-        console.log('One');
         this.setState(
             {contador: 1}
         );
     }
 
     Two = (props) => {
-        console.log('Two');
         this.setState(
             {contador: 2}
         );

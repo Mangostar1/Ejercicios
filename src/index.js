@@ -9,7 +9,6 @@ import Control from './Componentes/Control';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     <Control />
   </React.StrictMode>
 );
