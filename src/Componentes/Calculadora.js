@@ -93,7 +93,7 @@ export default function Calculadora(){
                 <input type="button" defaultValue="0" id="0" className="buttons" onClick={zero}/>
                 <input type="button" defaultValue="+" id="suma" className="buttons" onClick={sum}/>
 
-                <input type="reset" defaultValue="C" className="buttons" />
+                <input type="reset" defaultValue="C" className="buttons"/>
                 <input type="button" defaultValue="=" id="igual" className="buttons" onClick={result}/>                            
             </form>
         </div>
