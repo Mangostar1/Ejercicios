@@ -9,11 +9,11 @@
     --colorGray: gray;
 }
 
-#calcula, #item_2, #button_1, #button_2, #button_3{
+#calcula, #item_2, #button_1, #button_2, #button_3, #button_4{
     display: none;
 }
 
-#button_one, #button_two, #button_three{
+#button_one, #button_two, #button_three, #button_four{
     cursor: pointer;
 
     display: inline-block;
@@ -25,7 +25,7 @@
     transition: all 0.3s ease;
 }
 
-#button_one::before, #button_two::before, #button_three::before{
+#button_one::before, #button_two::before, #button_three::before, #button_four::before{
     content: ""; 
     
     display: inline-block;
@@ -38,20 +38,22 @@
     border-radius: 50%;
 }
 
-#button_one:hover, #button_two:hover, #button_three:hover{
+#button_one:hover, #button_two:hover, #button_three:hover, #four:hover{
     background-color: rgb(250, 144, 73);
 }
 
 #button_1:checked + label,
 #button_2:checked + label,
-#button_3:checked + label{
+#button_3:checked + label,
+#button_4:checked + label{
     padding: 5px 10px;
     background-color: rgb(250, 144, 73);
 }
 
 #button_1:checked + label::before,
 #button_2:checked + label::before,
-#button_3:checked + label::before{
+#button_3:checked + label::before,
+#button_4:checked + label::before{
     display: none;
 }
 
