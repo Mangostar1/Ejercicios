@@ -20,7 +20,9 @@
     background-position: center;
 }
 
-/* estilos en input radio */
+/*                           */
+/*  estilos en input radio   */
+/*                           */
 #circleLabel, 
 #crossLabel{
     padding: 5px 5px 5px 25px;
@@ -48,25 +50,16 @@
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: center;
+    display: var(--displayChangeCir, inline-block);
 }
 #crossLabel::after{
     background-image: url("../img/x-lg-svgrepo-com.svg");
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: center;
+    display: var(--displayChangeCro, inline-block);
 }
 
 #circle, #cross{
-    display: none;
-}
-
-#circle:checked + label + #cross + label{/* cross en javascript */
-    background-color: tomato;
-    color: white;
-    padding: 5px 5px 5px 5px;
-}
-
-
-#circle:checked + label + #cross + label::after{/* cross en javascript */
     display: none;
 }

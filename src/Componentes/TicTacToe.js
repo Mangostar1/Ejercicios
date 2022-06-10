@@ -27,13 +27,30 @@ export default class TicTacToe extends Component {
         this.setState(
             {ps1Play: 2, iaPlay: 'cross'}
         );
+        this.crossLabel = document.getElementById('crossLabel');
+        this.crossLabel.style.cssText = `background-color: #f0f0f0; color: black; padding: 5px 5px 5px 5px;`;
+        this.psClassCross = window.getComputedStyle(this.crossLabel, '::after');
+        this.crossLabel.style.setProperty('--displayChangeCro', 'none');
+        //se cambian estilos al otro input radio
+        this.circleLabel = document.getElementById('circleLabel');
+        this.circleLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
+        this.psClassCircle = window.getComputedStyle(this.circleLabel, '::after');
+        this.circleLabel.style.setProperty('--displayChangeCir', 'inline-block');
     }
     
     cross = () => {
         this.setState(
             {ps1Play: 1, iaPlay: 'circle'}
         );
-        document.getElementById('circleLabel').style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 5px;`;
+        this.circleLabel = document.getElementById('circleLabel');
+        this.circleLabel.style.cssText = `background-color: #f0f0f0; color: black; padding: 5px 5px 5px 5px;`;
+        this.psClassCircle = window.getComputedStyle(this.circleLabel, '::after');
+        this.circleLabel.style.setProperty('--displayChangeCir', 'none');
+        //se cambian estilos al otro input radio
+        this.crossLabel = document.getElementById('crossLabel');
+        this.crossLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
+        this.psClassCross = window.getComputedStyle(this.crossLabel, '::after');
+        this.crossLabel.style.setProperty('--displayChangeCro', 'inline-block');
     }
 
     VsIa = () => {//no hace nada aun
@@ -303,10 +320,7 @@ export default class TicTacToe extends Component {
                     <h3>Elige una opcion</h3>
                     <form>
                         <input type="radio" name="chose" id="circle" onClick={this.circle} />
-                        <label htmlFor="circle" id="circleLabel">
-                            Circulo
-                            {/* <img id="imgCircle" src={circle} /> */}
-                        </label>
+                        <label htmlFor="circle" id="circleLabel">Circulo</label>
                         <input type="radio" name="chose" id="cross" onClick={this.cross} />
                         <label htmlFor="cross" id="crossLabel">Cruz</label>
                     </form>
