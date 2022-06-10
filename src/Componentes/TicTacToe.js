@@ -33,15 +33,16 @@ export default class TicTacToe extends Component {
         this.setState(
             {ps1Play: 1, iaPlay: 'circle'}
         );
+        document.getElementById('circleLabel').style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 5px;`;
     }
 
-    VsIa = () => {
+    VsIa = () => {//no hace nada aun
         this.setState(
             {ia: 1, jugador: 0}
         )
     }
 
-    VsPlayer = () => {
+    VsPlayer = () => {//no hace nada aun
         this.setState(
             {jugador: 1, ia: 0}
         )
@@ -264,13 +265,26 @@ export default class TicTacToe extends Component {
     }
 
     IA = () => {
-        if (this.state.ia === 1) {
+        if (this.state.ia === 0) {
+            console.log('Selecciona una opcion, desde IA');
+        } else if (this.state.ia === 1) {
             console.log('IA seleccionada como jugador contrario, IA hace algo');
+            
+            if (this.state.iaPlay === 'cross') {
+                console.log('IA usa X');
+
+            } else if (this.state.iaPlay === 'circle') {
+                console.log('IA usa O');
+
+            }
+
         }
     }
 
     Player2 = () => {
-        console.log('programar Player2');
+        if (this.state.ps2Play === 1) {
+            console.log('Player2 seleccionado como jugador contrario, Player2 hace algo');
+        }
     }
 
     Reiniciar = () => {
@@ -288,16 +302,19 @@ export default class TicTacToe extends Component {
                 <div className="tictactoe">
                     <h3>Elige una opcion</h3>
                     <form>
-                        <label htmlFor="circle">Circulo</label>
                         <input type="radio" name="chose" id="circle" onClick={this.circle} />
-                        <label htmlFor="cross">Cruz</label>
+                        <label htmlFor="circle" id="circleLabel">
+                            Circulo
+                            {/* <img id="imgCircle" src={circle} /> */}
+                        </label>
                         <input type="radio" name="chose" id="cross" onClick={this.cross} />
+                        <label htmlFor="cross" id="crossLabel">Cruz</label>
                     </form>
                     <form>
                         <label htmlFor="ia">Vs IA</label>
                         <input type="radio" name="chose" id="ia" onClick={this.VsIa} />
                         <label htmlFor="player">Vs Player</label>
-                        <input type="radio" name="chose" id="player" onClick={this.VsPlayer}/>
+                        <input type="radio" name="chose" id="player" onClick={this.VsPlayer} />
                     </form>
                     <div id="tablero">
                         <div id="celda1" className="celdas" onClick={this.Celda1}></div>

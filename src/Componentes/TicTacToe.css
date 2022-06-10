@@ -15,8 +15,58 @@
 }
 
 #celda1, #celda2, #celda3, #celda4, #celda5, #celda6, #celda7, #celda8, #celda9{
-    /* background-image: url("../circle-svgrepo-com.svg") */
     background-repeat: no-repeat;
     background-size: 80px;
     background-position: center;
+}
+
+/* estilos en input radio */
+#circleLabel, 
+#crossLabel{
+    padding: 5px 5px 5px 25px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: black;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#circleLabel::after,
+#crossLabel::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 8px;
+
+    width: 15px;
+    height: 15px;
+}
+
+#circleLabel::after{
+    background-image: url("../img/circle-svgrepo-com.svg");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: center;
+}
+#crossLabel::after{
+    background-image: url("../img/x-lg-svgrepo-com.svg");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: center;
+}
+
+#circle, #cross{
+    display: none;
+}
+
+#circle:checked + label + #cross + label{/* cross en javascript */
+    background-color: tomato;
+    color: white;
+    padding: 5px 5px 5px 5px;
+}
+
+
+#circle:checked + label + #cross + label::after{/* cross en javascript */
+    display: none;
 }
