@@ -1,9 +1,7 @@
-import React,{ useState} from 'react'
+import React from 'react'
 import './Paint.css'
 
 export default function Paint(){
-
-    const [use, setUse] = useState(0); //0 nada, 1 lapiz, 2 goma
 
     let draw = false
     let initX;
@@ -55,7 +53,7 @@ export default function Paint(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    //herramientas
+    //Tools
     function goma() {
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
