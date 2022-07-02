@@ -65,6 +65,10 @@ export default class TicTacToe extends Component {
         )
     }
 
+    Alerta = () => {
+        alert('Selecciona una opcion entre X y O por favor');
+    }
+
     Celda1 = () => {
         if (this.state.ps1Play === 1) {
             console.log('celda 1 usa X');
@@ -85,7 +89,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 1 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -109,7 +113,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 2 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -133,7 +137,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 3 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -157,7 +161,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 4 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -181,7 +185,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 5 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -205,7 +209,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 6 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -229,7 +233,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 7 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -253,7 +257,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 8 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
@@ -277,7 +281,7 @@ export default class TicTacToe extends Component {
             this.IA();
         
         } else {
-            console.log('celda 9 vacia, selecciona una opcion');
+            this.Alerta();
         }
     }
 
