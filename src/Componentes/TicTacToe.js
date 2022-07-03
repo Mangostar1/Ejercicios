@@ -71,21 +71,21 @@ export default class TicTacToe extends Component {
 
     Celda1 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 1 usa X');
             this.setState({
                 celda1: 'X',
                 turno: 'X',
             });
             document.getElementById('celda1').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 1 usa O');
             this.setState({
                 celda1: 'O',
                 turno: 'O',
             });
             document.getElementById('celda1').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -95,21 +95,21 @@ export default class TicTacToe extends Component {
 
     Celda2 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 2 usa X');
             this.setState({
                 celda2: 'X',
                 turno: 'X',
             });
             document.getElementById('celda2').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 2 usa O');
             this.setState({
                 celda2: 'O',
                 turno: 'O',
             });
             document.getElementById('celda2').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -119,21 +119,21 @@ export default class TicTacToe extends Component {
 
     Celda3 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 3 usa X');
             this.setState({
                 celda3: 'X',
                 turno: 'X',
             });
             document.getElementById('celda3').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 3 usa O');
             this.setState({
                 celda3: 'O',
                 turno: 'O',
             });
             document.getElementById('celda3').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -143,21 +143,21 @@ export default class TicTacToe extends Component {
 
     Celda4 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 4 usa X');
             this.setState({
                 celda4: 'X',
                 turno: 'X',
             });
             document.getElementById('celda4').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 4 usa O');
             this.setState({
                 celda4: 'O',
                 turno: 'O',
             });
             document.getElementById('celda4').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -167,21 +167,21 @@ export default class TicTacToe extends Component {
 
     Celda5 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 5 usa X');
             this.setState({
                 celda5: 'X',
                 turno: 'X',
             });
             document.getElementById('celda5').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 5 usa O');
             this.setState({
                 celda5: 'O',
                 turno: 'O',
             });
             document.getElementById('celda5').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -191,21 +191,21 @@ export default class TicTacToe extends Component {
 
     Celda6 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 6 usa X');
             this.setState({
                 celda6: 'X',
                 turno: 'X',
             });
             document.getElementById('celda6').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 6 usa O');
             this.setState({
                 celda6: 'O',
                 turno: 'O',
             });
             document.getElementById('celda6').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -215,21 +215,21 @@ export default class TicTacToe extends Component {
 
     Celda7 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 7 usa X');
             this.setState({
                 celda7: 'X',
                 turno: 'X',
             });
             document.getElementById('celda7').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 7 usa O');
             this.setState({
                 celda7: 'O',
                 turno: 'O',
             });
             document.getElementById('celda7').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -239,21 +239,21 @@ export default class TicTacToe extends Component {
 
     Celda8 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 8 usa X');
             this.setState({
                 celda8: 'X',
                 turno: 'X',
             });
             document.getElementById('celda8').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 8 usa O');
             this.setState({
                 celda8: 'O',
                 turno: 'O',
             });
             document.getElementById('celda8').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
         
         } else {
@@ -263,23 +263,23 @@ export default class TicTacToe extends Component {
 
     Celda9 = () => {
         if (this.state.ps1Play === 1) {
-            console.log('celda 9 usa X');
             this.setState({
                 celda9: 'X',
                 turno: 'X',
             });
             document.getElementById('celda9').style.cssText = `background-image: url("${cross}");`;
+            this.Win();
             this.IA();
         
         } else if (this.state.ps1Play === 2) {
-            console.log('celda 9 usa O');
             this.setState({
                 celda9: 'O',
                 turno: 'O',
             });
             document.getElementById('celda9').style.cssText = `background-image: url("${circle}");`;
+            this.Win();
             this.IA();
-        
+
         } else {
             this.Alerta();
         }
@@ -293,12 +293,9 @@ export default class TicTacToe extends Component {
             
             if (this.state.iaPlay === 'cross') {
                 console.log('IA usa X');
-
             } else if (this.state.iaPlay === 'circle') {
                 console.log('IA usa O');
-
             }
-
         }
     }
 
@@ -313,7 +310,17 @@ export default class TicTacToe extends Component {
     }
 
     Win = () => {
-        console.log('Programar ganador');
+        if (this.state.celda1 === 'X' && this.state.celda2 === 'X' && this.state.celda3 === 'X') {
+            this.setState({
+                ganador: 'X',
+            });
+            alert(`Ganador X`);
+        } else if (this.state.celda4 === 'X' && this.state.celda5 === 'X' && this.state.celda6 === 'X') {
+            this.setState({
+                ganador: 'X',
+            });
+            alert(`Ganador X`);
+        }
     }
 
     render() {
@@ -322,13 +329,13 @@ export default class TicTacToe extends Component {
                 <h1>TicTacToe</h1>
                 <div className="tictactoe">
                     <h3>Elige una opcion</h3>
-                    <form>
+                    <form id='selectChoise'>
                         <input type="radio" name="chose" id="circle" onClick={this.circle} />
                         <label htmlFor="circle" id="circleLabel">Circulo</label>
                         <input type="radio" name="chose" id="cross" onClick={this.cross} />
                         <label htmlFor="cross" id="crossLabel">Cruz</label>
                     </form>
-                    <form>
+                    <form id='vsChose'>
                         <label htmlFor="ia">Vs IA</label>
                         <input type="radio" name="chose" id="ia" onClick={this.VsIa} />
                         <label htmlFor="player">Vs Player</label>
