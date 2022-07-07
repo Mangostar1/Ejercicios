@@ -1,5 +1,9 @@
 #main{
     min-height: calc(100vh - 90px);
     padding: 10px 10px;
-    background-color: #ffffff6e; /* for testing */
+    background-color: #ffffff3a; /* for testing */
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
