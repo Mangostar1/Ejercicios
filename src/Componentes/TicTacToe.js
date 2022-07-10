@@ -1,9 +1,6 @@
 import React,{ Component} from 'react'
-import cross from "src/img/x-lg-svgrepo-com.svg";
-import circle from "src/img/circle-svgrepo-com.svg";
-
-/* import cross from "@img/x-lg-svgrepo-com.svg";
-import circle from "@img/circle-svgrepo-com.svg"; */
+import cross from "img/x-lg-svgrepo-com.svg";
+import circle from "img/circle-svgrepo-com.svg";
 
 import './TicTacToe.css'
 
