@@ -1,8 +1,6 @@
 #main{
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - 140px);
     padding: 10px 10px;
-    background-color: #ffffff3a; /* for testing */
-
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

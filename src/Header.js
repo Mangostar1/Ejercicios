@@ -1,7 +1,14 @@
+import React,{ useState } from 'react';
+
 import './Header.css';
+import Main from "./Main";
 
 export default function Header() {
+
+    const [nav, setNav] = useState(0);
+
     return(
+        <>
         <header className="header">
             <nav className="nav">
                 <div className="logo-content">
@@ -10,11 +17,12 @@ export default function Header() {
                     </a>
                 </div>
                 <ul className="menu">
-                    <li className="list"><a className="link" href="#">Inicio</a></li>
-                    <li className="list"><a className="link" href="#">Link 2</a></li>
-                    <li className="list"><a className="link" href="#">Link 3</a></li>
+                    <li className="list"><a className="link" href="https://omar-zavala.xyz/">Inicio</a></li>
+                    <li className="list"><a className="link" href="https://omar-zavala.xyz/">APIs</a></li>
                 </ul>
             </nav>
         </header>
+        <Main />
+        </>
     );
 }
