@@ -1,5 +1,5 @@
 import './Main.css';
-import Control from './Componentes/Control';
+import Control from 'Componentes/Control';
 
 export default function Main() {
     return (

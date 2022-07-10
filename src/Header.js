@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 
-import './Header.css';
 import Main from "./Main";
+import './Header.css';
 
 export default function Header() {
 
