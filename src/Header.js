@@ -1,11 +1,20 @@
 import React,{ useState } from 'react';
 
 import Main from "./Main";
+import APIs from './APIs';
 import './Header.css';
 
 export default function Header() {
 
     const [nav, setNav] = useState(0);
+
+    const handleNav = (e) => {
+        if (e.target.id === "nav-home") {
+            setNav(0);
+        } else if (e.target.id === "nav-about") {
+            setNav(1);
+        }
+    }
 
     return(
         <>
@@ -17,12 +26,12 @@ export default function Header() {
                     </a>
                 </div>
                 <ul className="menu">
-                    <li className="list"><a className="link" href="https://omar-zavala.xyz/">Inicio</a></li>
-                    <li className="list"><a className="link" href="https://omar-zavala.xyz/">APIs</a></li>
+                    <li id="nav-home" className="link" onClick={handleNav}>Inicio</li>
+                    <li id="nav-about" className="link" onClick={handleNav}>APIs</li>
                 </ul>
             </nav>
         </header>
-        <Main />
+        {nav === 0 ? <Main /> : <APIs />}
         </>
     );
 }

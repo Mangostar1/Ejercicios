@@ -18,6 +18,10 @@
     gap: 2em;
 }
 
+#color{
+    border: none;
+}
+
 
 /*             */
 /* label icons */
