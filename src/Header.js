@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 
 import Main from "./Main";
 import APIs from './APIs';
+import logo from 'img/logo_omar.png';
 import './Header.css';
 
 export default function Header() {
@@ -22,7 +23,7 @@ export default function Header() {
             <nav className="nav">
                 <div className="logo-content">
                     <a className="link-logo" href="https://omar-zavala.xyz/">
-                        <img src="https://picsum.photos/80/25" />
+                        <img id='logo' src={logo} />
                     </a>
                 </div>
                 <ul className="menu">
