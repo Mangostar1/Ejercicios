@@ -15,7 +15,7 @@ export default function Header() {
             setNav(1);
         }
     }
-
+/* logo ira en 80 * 25 */
     return(
         <>
         <header className="header">
