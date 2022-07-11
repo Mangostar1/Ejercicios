@@ -16,14 +16,14 @@ export default function Header() {
             setNav(1);
         }
     }
-/* logo ira en 80 * 25 */
+
     return(
         <>
         <header className="header">
             <nav className="nav">
                 <div className="logo-content">
                     <a className="link-logo" href="https://omar-zavala.xyz/">
-                        <img id='logo' src={logo} />
+                        <img id='logo' src={logo} alt='logo'/>
                     </a>
                 </div>
                 <ul className="menu">
