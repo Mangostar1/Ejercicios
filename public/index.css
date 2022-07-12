@@ -6,7 +6,7 @@
 }
 
 body{
-    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    background: #dfdfdf;
 }
 
 /* footer */
@@ -31,11 +31,4 @@ footer{
 
 footer div{
     margin-top: .5em;
-}
-
-.personalLinks{
-    color: white;
-    font-weight: bold;
-
-    text-decoration: none;
 }
