@@ -20,8 +20,8 @@ export default function PokeAPI() {
             <h2>PokeAPI</h2>
             <form className="poke-api-form">
                 <label htmlFor="pokemonSearch">Buscar Pokemon</label>
-                <input type="text" id="pokemonSearch" placeholder="Pokemon" />
-                <input type="button" value="Buscar" onClick={Test}/>
+                <input type="text" id="pokemonSearch" placeholder="Pokemon" defaultValue="pikachu" />
+                <input type="button" value="Buscar" onClick={Test} />
             </form>
         </section>
     );
