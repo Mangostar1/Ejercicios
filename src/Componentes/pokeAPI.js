@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import 'css/pokeAPI.css';
 
 export default function PokeAPI() {
+    const [pokemon, setPokemon] = useState({});
     async function FetchItem() {
         let pokeSearch = document.getElementById('pokemonSearch').value;
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeSearch}`);
