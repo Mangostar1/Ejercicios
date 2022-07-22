@@ -14,7 +14,7 @@ export default function PokeAPI() {
     }, []);
 
     const Test = () => {
-        FetchItem();
+        console.log('Hola');
     }
     return(
         <section className="poke-api">
@@ -22,7 +22,7 @@ export default function PokeAPI() {
             <form className="poke-api-form">
                 <label htmlFor="pokemonSearch">Buscar Pokemon</label>
                 <input type="text" id="pokemonSearch" placeholder="Pokemon" defaultValue="pikachu" />
-                <input type="button" value="Buscar" onClick={Test} />
+                <input type="button" value="Buscar" onClick={Test} className='' />
             </form>
         </section>
     );
