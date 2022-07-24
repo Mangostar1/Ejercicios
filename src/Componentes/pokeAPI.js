@@ -3,29 +3,34 @@ import 'css/pokeAPI.css';
 
 function Poke({name, avatar, id}) {
     return(
-        <>
-            <h1>PokeAPI</h1>
-        </>
+        <div>
+            <h1>Pokemo</h1>
+            <div className="border border-black">
+                <img className="" src={avatar} alt={name}/>
+                <h2 className="font-black">{name}</h2>
+            </div>
+        </div>
     );
 }
 
 export default function PokeAPI() {
     const [pokemons, setPokemons] = useState([]);
     const [pokemonNameF, setPokemonNameF] = useState('pikachu');
+    const [pokemonImg, setPokemonImg] = useState('');
 
     async function FetchItem() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
         let pokemon = await data.json();
         setPokemons(pokemon);
+        setPokemonImg(pokemon.sprites.front_default);
     }
     useEffect(() => {
         FetchItem();
-    }, []);
+    });
 
     const Test = () => {
         setPokemonNameF(document.getElementById('pokemonSearch').value);
-        console.log(pokemonNameF, pokemons);
-    }// agregar elementos html para mostrar datos del json, la info del pokemon consultado a la api
+    }
     return(
         <section className="poke-api">
             <h2>PokeAPI</h2>
@@ -34,6 +39,7 @@ export default function PokeAPI() {
                 <input type="text" id="pokemonSearch" placeholder="Pokemon" className="py-1 px-2"/>
                 <input type="button" value="Buscar" onClick={Test} className='bg-sky-50 hover:bg-sky-200 py-1 px-2' />
             </form>
+            <Poke name={pokemonNameF} avatar={pokemonImg} id='id' />
         </section>
     );
 }
