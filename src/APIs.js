@@ -5,7 +5,7 @@ import './APIs.css';
 
 export default function APIs() {
     return(
-        <main id="main">
+        <main id="main-api">
             <h1 id="title-main">APIs</h1>
             <PokeAPI />
         </main>
