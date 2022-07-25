@@ -1,34 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import 'css/pokeAPI.css';
 
-//agregar id del pokemon en la pokedex
-
 function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
     return(
-        <div className='flex'>
+        <div className='flex-col'>
             <h1 className="font-black">Pokemon</h1>
             <div className="border border-black">
-                <img className="" src={avatar} alt={name}/>
-                <p className="">Nombre: {name}</p>
-                <p>N°: {id}</p>
-                <div>
-                    <h3 className="text-center">Estadisticas</h3>
+                <img className="w-40 m-auto" src={avatar} alt={name}/>
+                <p className="px-2">Nombre: {name}</p>
+                <p className="px-2">N°: {id}</p>
+                <div className="px-2 py-2">
+                    <h3 className="text-center font-black">Estadisticas</h3>
                     <table className="">
                         <tr>
-                            <th className="">HP</th>
-                            <th className="">Attack</th>
-                            <th className="">Defense</th>
-                            <th className="">Special Attack</th>
-                            <th className="">Special Defense</th>
-                            <th className="">Speed</th>
+                            <th className="px-2 border border-black bg-slate-300">HP</th>
+                            <th className="px-2 border border-black bg-slate-300">Attack</th>
+                            <th className="px-2 border border-black bg-slate-300">Defense</th>
+                            <th className="px-2 border border-black bg-slate-300">Special Attack</th>
+                            <th className="px-2 border border-black bg-slate-300">Special Defense</th>
+                            <th className="px-2 border border-black bg-slate-300">Speed</th>
                         </tr>
                         <tr>
-                            <td>{hp}</td>
-                            <td>{atk}</td>
-                            <td>{def}</td>
-                            <td>{spAtk}</td>
-                            <td>{spDef}</td>
-                            <td>{speed}</td>
+                            <td className="px-2 border border-black">{hp}</td>
+                            <td className="px-2 border border-black">{atk}</td>
+                            <td className="px-2 border border-black">{def}</td>
+                            <td className="px-2 border border-black">{spAtk}</td>
+                            <td className="px-2 border border-black">{spDef}</td>
+                            <td className="px-2 border border-black">{speed}</td>
                         </tr>
                     </table>
                 </div>
