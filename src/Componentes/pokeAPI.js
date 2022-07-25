@@ -13,14 +13,14 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
                 <p>N°: {id}</p>
                 <div>
                     <h3 className="text-center">Estadisticas</h3>
-                    <table>
+                    <table className="">
                         <tr>
-                            <th>HP</th>
-                            <th>Attack</th>
-                            <th>Defense</th>
-                            <th>Special Attack</th>
-                            <th>Special Defense</th>
-                            <th>Speed</th>
+                            <th className="">HP</th>
+                            <th className="">Attack</th>
+                            <th className="">Defense</th>
+                            <th className="">Special Attack</th>
+                            <th className="">Special Defense</th>
+                            <th className="">Speed</th>
                         </tr>
                         <tr>
                             <td>{hp}</td>
@@ -42,7 +42,12 @@ export default function PokeAPI() {
     const [pokemonNameF, setPokemonNameF] = useState('pikachu');
     const [pokemonImg, setPokemonImg] = useState('');
     const [pokemonId, setPokemonId] = useState('');
-    const [stats, setStats] = useState([]);
+    const [stats0, setStats0] = useState([]);
+    const [stats1, setStats1] = useState([]);
+    const [stats2, setStats2] = useState([]);
+    const [stats3, setStats3] = useState([]);
+    const [stats4, setStats4] = useState([]);
+    const [stats5, setStats5] = useState([]);
 
     async function FetchItem() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
@@ -50,15 +55,19 @@ export default function PokeAPI() {
         setPokemons(pokemon);
         setPokemonImg(pokemon.sprites.front_default);
         setPokemonId(pokemon.id);
-        setStats(pokemon.stats);
+        setStats0(pokemon.stats[0].base_stat);
+        setStats1(pokemon.stats[1].base_stat);
+        setStats2(pokemon.stats[2].base_stat);
+        setStats3(pokemon.stats[3].base_stat);
+        setStats4(pokemon.stats[4].base_stat);
+        setStats5(pokemon.stats[5].base_stat);
     }
     useEffect(() => {
         FetchItem();
-    });
+    }, [pokemonNameF]);
 
     const ConsultaPoke = () => {
         setPokemonNameF(document.getElementById('pokemonSearch').value);
-        console.log(stats[1].base_stat);
     }
     return(
         <section className="">
@@ -68,8 +77,8 @@ export default function PokeAPI() {
                 <input type="text" id="pokemonSearch" placeholder="Pokemon" className="py-1 px-2"/>
                 <input type="button" value="Buscar" onClick={ConsultaPoke} className='bg-sky-50 hover:bg-sky-200 py-1 px-2' />
             </form>
-            <Poke name={pokemonNameF} avatar={pokemonImg} 
-            id={pokemonId} hp={stats[0].base_stat} atk={stats[1].base_stat} def={stats[2].base_stat} spAtk={stats[3].base_stat} spDef={stats[4].base_stat} speed={stats[5].base_stat} />
+            <Poke name={pokemonNameF} avatar={pokemonImg} id={pokemonId} key={pokemonId} 
+            hp={stats0} atk={stats1} def={stats2} spAtk={stats3} spDef={stats4} speed={stats5} />
         </section>
     );
 }
