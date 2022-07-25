@@ -23,12 +23,12 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
                             <th>Speed</th>
                         </tr>
                         <tr>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
+                            <td>{hp}</td>
+                            <td>{atk}</td>
+                            <td>{def}</td>
+                            <td>{spAtk}</td>
+                            <td>{spDef}</td>
+                            <td>{speed}</td>
                         </tr>
                     </table>
                 </div>
@@ -68,7 +68,8 @@ export default function PokeAPI() {
                 <input type="text" id="pokemonSearch" placeholder="Pokemon" className="py-1 px-2"/>
                 <input type="button" value="Buscar" onClick={ConsultaPoke} className='bg-sky-50 hover:bg-sky-200 py-1 px-2' />
             </form>
-            <Poke name={pokemonNameF} avatar={pokemonImg} id={pokemonId} />
+            <Poke name={pokemonNameF} avatar={pokemonImg} 
+            id={pokemonId} hp={stats[0].base_stat} atk={stats[1].base_stat} def={stats[2].base_stat} spAtk={stats[3].base_stat} spDef={stats[4].base_stat} speed={stats[5].base_stat} />
         </section>
     );
 }
