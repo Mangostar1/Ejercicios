@@ -12,22 +12,26 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
                 <div className="px-2 py-2">
                     <h3 className="text-center font-black">Estadisticas</h3>
                     <table className="">
-                        <tr>
-                            <th className="px-2 border border-black bg-slate-300">HP</th>
-                            <th className="px-2 border border-black bg-slate-300">Attack</th>
-                            <th className="px-2 border border-black bg-slate-300">Defense</th>
-                            <th className="px-2 border border-black bg-slate-300">Special Attack</th>
-                            <th className="px-2 border border-black bg-slate-300">Special Defense</th>
-                            <th className="px-2 border border-black bg-slate-300">Speed</th>
-                        </tr>
-                        <tr>
-                            <td className="px-2 border border-black">{hp}</td>
-                            <td className="px-2 border border-black">{atk}</td>
-                            <td className="px-2 border border-black">{def}</td>
-                            <td className="px-2 border border-black">{spAtk}</td>
-                            <td className="px-2 border border-black">{spDef}</td>
-                            <td className="px-2 border border-black">{speed}</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th className="px-2 border border-black bg-slate-300">HP</th>
+                                <th className="px-2 border border-black bg-slate-300">Attack</th>
+                                <th className="px-2 border border-black bg-slate-300">Defense</th>
+                                <th className="px-2 border border-black bg-slate-300">Special Attack</th>
+                                <th className="px-2 border border-black bg-slate-300">Special Defense</th>
+                                <th className="px-2 border border-black bg-slate-300">Speed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="px-2 border border-black">{hp}</td>
+                                <td className="px-2 border border-black">{atk}</td>
+                                <td className="px-2 border border-black">{def}</td>
+                                <td className="px-2 border border-black">{spAtk}</td>
+                                <td className="px-2 border border-black">{spDef}</td>
+                                <td className="px-2 border border-black">{speed}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
