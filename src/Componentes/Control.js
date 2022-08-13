@@ -1,67 +1,51 @@
-import React,{ Component } from 'react';
+import React,{ useState } from 'react';
 
 import './Control.css';
-import Calculadora from './Calculadora';
-import Calorias from './Calorias';
-import TicTacToe from './TicTacToe';
-import Paint from './Paint';
 
-export default class Control extends Component {
+export default function Control(props) {
 
-    state = {
-        contador: 1,
-    }
+    const [contador, setContador] = useState(1);
 //logica de los botones
-    Calc = (props) => {    
-        this.setState(
-            {contador: 1}
-        );
+    const Comp1 = () => {
+        setContador(1);
     }
 
-    Cal = (props) => {
-        this.setState(
-            {contador: 2}
-        );
+    const Comp2 = () => {
+        setContador(2);
     }
 
-    TicTac = (props) => {
-        this.setState(
-            {contador: 3}
-        );
+    const Comp3 = () => {
+        setContador(3);
     }
 
-    Paint = (props) => {
-        this.setState(
-            {contador: 4}
-        )
+    const Comp4 = () => {
+        setContador(4);
     }
 //Control de contenidos con if
-    ControlContenido = () => {
-        if (this.state.contador === 1) {
-            return <Calculadora />;
-        } else if (this.state.contador === 2) {
-            return <Calorias />;
-        } else if (this.state.contador === 3) {
-            return <TicTacToe />;
-        } else if (this.state.contador === 4) {
-            return <Paint />;
+    const ControlContenido = () => {
+        if (contador === 1) {
+            return props.component_1;
+        } else if (contador === 2) {
+            return props.component_2;
+        } else if (contador === 3) {
+            return props.component_3;
+        } else if (contador === 4) {
+            return props.component_4;
         }
     }
-    render() {
-        return (
-            <div id="control">
-                <form action="" className="control">
-                    <input type="radio" name="botones" id="button_1" defaultValue="1" onClick={this.Calc} defaultChecked/>
-                    <label htmlFor="button_1" id="button_one">Calculadora</label>
-                    <input type="radio" name="botones" id="button_2" defaultValue="2" onClick={this.Cal}/>
-                    <label htmlFor="button_2" id="button_two">Calorias</label>
-                    <input type="radio" name="botones" id="button_3" defaultValue="3" onClick={this.TicTac}/>
-                    <label htmlFor="button_3" id="button_three">Tic Tac Toe</label>
-                    <input type="radio" name="botones" id="button_4" defaultValue="4" onClick={this.Paint}/>
-                    <label htmlFor="button_4" id="button_four">Paint</label>
-                </form>
-                {this.ControlContenido()}
-            </div>
-        );
-    }
+    return (
+        <div id="control">
+            <form action="" className="control">
+                <input type="radio" name="botones" id="button_1" defaultValue="1" onClick={Comp1} defaultChecked/>
+                <label htmlFor="button_1" id="button_one">{props.componentName_1}</label>
+                <input type="radio" name="botones" id="button_2" defaultValue="2" onClick={Comp2}/>
+                <label htmlFor="button_2" id="button_two">{props.componentName_2}</label>
+                <input type="radio" name="botones" id="button_3" defaultValue="3" onClick={Comp3}/>
+                <label htmlFor="button_3" id="button_three">{props.componentName_3}</label>
+                <input type="radio" name="botones" id="button_4" defaultValue="4" onClick={Comp4}/>
+                <label htmlFor="button_4" id="button_four">{props.componentName_4}</label>
+            </form>
+            {ControlContenido()}
+        </div>
+    );
 }
