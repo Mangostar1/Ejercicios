@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import 'css/pokeAPI.css';
-// poner peso de pokemon, este viene en hectogramos, 1 hectogramo es igual a 0,1 kg
 // poner linea evolutiva del pokemon con un button que lleve a sus datos en pantalla
 // poner un boton que lleve al siguente pokemon en la pokedex
-function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
+function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight}) {
     return(
         <div className='flex-col'>
             <h1 className="font-black">Pokemon</h1>
@@ -11,6 +10,7 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
                 <img className="w-40 m-auto" src={avatar} alt={name}/>
                 <p className="px-2">Nombre: {name}</p>
                 <p className="px-2">N°: {id}</p>
+                <p className="px-2">Peso: {weight + ' kg'}</p>
                 <div className="px-2 py-2">
                     <h3 className="text-center font-black">Estadisticas</h3>
                     <table className="">
@@ -52,6 +52,7 @@ export default function PokeAPI() {
     const [stats3, setStats3] = useState([]);
     const [stats4, setStats4] = useState([]);
     const [stats5, setStats5] = useState([]);
+    const [peso, setPeso] = useState([]);
 
     async function FetchItem() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
@@ -66,6 +67,7 @@ export default function PokeAPI() {
         setStats3(pokemon.stats[3].base_stat);
         setStats4(pokemon.stats[4].base_stat);
         setStats5(pokemon.stats[5].base_stat);
+        setPeso(pokemon.weight * 0.1);
     }
     useEffect(() => {
         FetchItem();
@@ -83,7 +85,8 @@ export default function PokeAPI() {
                 <input type="button" value="Buscar" onClick={ConsultaPoke} className='bg-sky-50 hover:bg-sky-200 py-1 px-2 ease-in-out duration-300' />
             </form>
             <Poke name={pokemonNameF} avatar={pokemonImg} id={pokemonId} key={pokemonId} 
-            hp={stats0} atk={stats1} def={stats2} spAtk={stats3} spDef={stats4} speed={stats5} />
+            hp={stats0} atk={stats1} def={stats2} spAtk={stats3} spDef={stats4} speed={stats5}
+            weight={peso} />
         </section>
     );
 }
