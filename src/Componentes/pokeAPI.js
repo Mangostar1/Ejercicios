@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import 'css/pokeAPI.css';
+import cross from "img/x-lg-svgrepo-com.svg";
 // poner linea evolutiva del pokemon con un button que lleve a sus datos en pantalla
 // poner un boton que lleve al siguente pokemon en la pokedex
-function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight}) {
+function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, height, type, basePokemon, evolution, lastEvolution}) {
     return(
         <div className='flex-col'>
             <h1 className="font-black">Pokemon</h1>
@@ -11,6 +12,8 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight}) {
                 <p className="px-2">Nombre: {name}</p>
                 <p className="px-2">N°: {id}</p>
                 <p className="px-2">Peso: {weight + ' kg'}</p>
+                <p className="px-2">Altura: {height + ' cm'}</p>
+                <p className="px-2">Tipo: {type}</p>
                 <div className="px-2 py-2">
                     <h3 className="text-center font-black">Estadisticas</h3>
                     <table className="">
@@ -35,6 +38,21 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight}) {
                             </tr>
                         </tbody>
                     </table>
+                    <div className="flex flex-row flex-wrap gap-x-3">
+                        <h3 className="basis-full text-center font-black">Linea evolutiva</h3>
+                        <div className="">
+                            <img src={basePokemon || cross} alt={basePokemon}/>
+                            poke_1
+                        </div>
+                        <div className="">
+                            <img src={evolution || cross} alt={evolution}/>
+                            poke_2
+                        </div>
+                        <div className="">
+                            <img src={lastEvolution || cross} alt={lastEvolution}/>
+                            poke_3
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,7 +60,6 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight}) {
 }
 
 export default function PokeAPI() {
-    const [pokemons, setPokemons] = useState([]);
     const [pokemonNameF, setPokemonNameF] = useState('pikachu');
     const [pokemonImg, setPokemonImg] = useState('');
     const [pokemonId, setPokemonId] = useState('');
@@ -53,12 +70,18 @@ export default function PokeAPI() {
     const [stats4, setStats4] = useState([]);
     const [stats5, setStats5] = useState([]);
     const [peso, setPeso] = useState([]);
+    const [altura, setAltura] = useState([]);
+    const [tipo, setTipo] = useState([]);
 
-    async function FetchItem() {
+    const [basePokemon, setBasePokemon] = useState([]);
+    const [evolution, setEvolution] = useState([]);
+    const [lastEvolution, setLastEvolution] = useState([]);
+
+
+    async function FetchPokemon() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
         let pokemon = await data.json();
         console.log(pokemon);
-        setPokemons(pokemon);
         setPokemonImg(pokemon.sprites.front_default);
         setPokemonId(pokemon.id);
         setStats0(pokemon.stats[0].base_stat);
@@ -68,9 +91,41 @@ export default function PokeAPI() {
         setStats4(pokemon.stats[4].base_stat);
         setStats5(pokemon.stats[5].base_stat);
         setPeso(pokemon.weight * 0.1);
+        setAltura(pokemon.height * 10);
+        setTipo(pokemon.types[0].type.name);//hacer un for para que muestre todos los tipos
+
+        let urlTest = pokemon.species.url
+        let dataSpecies = await fetch(urlTest);
+        let Species = await dataSpecies.json();
+        let urlEvolution = Species.evolution_chain.url;
+
+        let dataEvolution = await fetch(urlEvolution);
+        let Evolution = await dataEvolution.json();
+
+        setBasePokemon(Evolution.chain.species.name);
+        setEvolution(Evolution.chain.evolves_to[0].species.name);
+        setLastEvolution(Evolution.chain.evolves_to[0].evolves_to[0].species.name);
     }
+
     useEffect(() => {
-        FetchItem();
+        FetchPokemon();
+        return () => {
+            setPokemonNameF('');
+            setPokemonImg('');
+            setPokemonId('');
+            setStats0([]);
+            setStats1([]);
+            setStats2([]);
+            setStats3([]);
+            setStats4([]);
+            setStats5([]);
+            setPeso([]);
+            setAltura([]);
+            setTipo([]);
+            setBasePokemon([]);
+            setEvolution([]);
+            setLastEvolution([]);
+        }
     }, [pokemonNameF]);
 
     const ConsultaPoke = () => {
@@ -86,7 +141,9 @@ export default function PokeAPI() {
             </form>
             <Poke name={pokemonNameF} avatar={pokemonImg} id={pokemonId} key={pokemonId} 
             hp={stats0} atk={stats1} def={stats2} spAtk={stats3} spDef={stats4} speed={stats5}
-            weight={peso} />
+            weight={peso} height={altura} type={tipo}
+            basePokemon={basePokemon} evolution={evolution} lastEvolution={lastEvolution}
+            />
         </section>
     );
 }
