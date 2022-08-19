@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import 'css/pokeAPI.css';
-
+// poner peso de pokemon, este viene en hectogramos, 1 hectogramo es igual a 0,1 kg
+// poner linea evolutiva del pokemon con un button que lleve a sus datos en pantalla
+// poner un boton que lleve al siguente pokemon en la pokedex
 function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed}) {
     return(
         <div className='flex-col'>
@@ -54,6 +56,7 @@ export default function PokeAPI() {
     async function FetchItem() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
         let pokemon = await data.json();
+        console.log(pokemon);
         setPokemons(pokemon);
         setPokemonImg(pokemon.sprites.front_default);
         setPokemonId(pokemon.id);
@@ -75,9 +78,9 @@ export default function PokeAPI() {
         <section className="">
             <h2 className="font-black text-xl">PokeAPI</h2>
             <form className="">
-                <label htmlFor="pokemonSearch">Buscar Pokemon:</label>
+                <label className="px-2" htmlFor="pokemonSearch">Buscar Pokemon:</label>
                 <input type="text" id="pokemonSearch" placeholder="Pokemon" className="py-1 px-2"/>
-                <input type="button" value="Buscar" onClick={ConsultaPoke} className='bg-sky-50 hover:bg-sky-200 py-1 px-2' />
+                <input type="button" value="Buscar" onClick={ConsultaPoke} className='bg-sky-50 hover:bg-sky-200 py-1 px-2 ease-in-out duration-300' />
             </form>
             <Poke name={pokemonNameF} avatar={pokemonImg} id={pokemonId} key={pokemonId} 
             hp={stats0} atk={stats1} def={stats2} spAtk={stats3} spDef={stats4} speed={stats5} />

@@ -25,7 +25,7 @@ function calculo() {
         } else {
             hombre *= 1.9;
         }
-        respuesta.value = hombre;
+        respuesta.value = hombre.toFixed(1);
         
     } else {
 
@@ -40,7 +40,7 @@ function calculo() {
         } else {
             mujer *= 1.9;
         }
-        respuesta.value = mujer;
+        respuesta.value = mujer.toFixed(1);
     }
 }
 
