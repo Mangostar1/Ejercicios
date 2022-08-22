@@ -8,7 +8,7 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, heig
             <h1 className="font-black">Pokemon</h1>
             <div className="border border-black">
                 <img className="w-40 m-auto" src={avatar} alt={name}/>
-                <p className="px-2"><span className="font-black">Nombre:</span> {name || 'test'}</p>
+                <p className="px-2"><span className="font-black">Nombre:</span> {name}</p>
                 <p className="px-2"><span className="font-black">N°:</span> {id}</p>
                 <p className="px-2"><span className="font-black">Peso:</span> {weight + ' kg'}</p>
                 <p className="px-2"><span className="font-black">Altura:</span> {height + ' cm'}</p>
@@ -65,7 +65,6 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, heig
 }
 
 export default function PokeAPI() {
-    const [pokemon, setPokemon] = useState([]);
     const [pokemonNameF, setPokemonNameF] = useState('pikachu');
     const [pokemonImg, setPokemonImg] = useState('');
     const [pokemonId, setPokemonId] = useState('');
@@ -92,8 +91,7 @@ export default function PokeAPI() {
     async function FetchPokemon() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
         let pokemon = await data.json();
-        //console.log(pokemon);
-        setPokemon(pokemon);
+        console.log(pokemon);
         setPokemonImg(pokemon.sprites.other.home.front_default);
         setPokemonId(pokemon.id);
         setStats0(pokemon.stats[0].base_stat);
