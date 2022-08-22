@@ -8,11 +8,11 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, heig
             <h1 className="font-black">Pokemon</h1>
             <div className="border border-black">
                 <img className="w-40 m-auto" src={avatar} alt={name}/>
-                <p className="px-2">Nombre: {name}</p>
-                <p className="px-2">N°: {id}</p>
-                <p className="px-2">Peso: {weight + ' kg'}</p>
-                <p className="px-2">Altura: {height + ' cm'}</p>
-                <p className="px-2">Tipo: {type} </p>
+                <p className="px-2"><span className="font-black">Nombre:</span> {name || 'test'}</p>
+                <p className="px-2"><span className="font-black">N°:</span> {id}</p>
+                <p className="px-2"><span className="font-black">Peso:</span> {weight + ' kg'}</p>
+                <p className="px-2"><span className="font-black">Altura:</span> {height + ' cm'}</p>
+                <p className="px-2"><span className="font-black">Tipo:</span> {type} </p>
                 <div className="px-2 py-2">
                     <h3 className="text-center font-black">Estadisticas</h3>
                     <table className="">
@@ -65,6 +65,7 @@ function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, heig
 }
 
 export default function PokeAPI() {
+    const [pokemon, setPokemon] = useState([]);
     const [pokemonNameF, setPokemonNameF] = useState('pikachu');
     const [pokemonImg, setPokemonImg] = useState('');
     const [pokemonId, setPokemonId] = useState('');
@@ -91,7 +92,8 @@ export default function PokeAPI() {
     async function FetchPokemon() {
         let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
         let pokemon = await data.json();
-        console.log(pokemon);
+        //console.log(pokemon);
+        setPokemon(pokemon);
         setPokemonImg(pokemon.sprites.other.home.front_default);
         setPokemonId(pokemon.id);
         setStats0(pokemon.stats[0].base_stat);
@@ -105,7 +107,7 @@ export default function PokeAPI() {
         setTipo(
             pokemon.types.map((type) => {
                 return type.type.name + ' ';
-            }));//hacer un for para que muestre todos los tipos
+            }));
 
         let urlTest = pokemon.species.url
         let dataSpecies = await fetch(urlTest);
@@ -135,7 +137,6 @@ export default function PokeAPI() {
     useEffect(() => {
         FetchPokemon();
         return () => {
-            setPokemonNameF('');
             setPokemonImg('');
             setPokemonId('');
             setStats0([]);
@@ -157,7 +158,7 @@ export default function PokeAPI() {
     }, [pokemonNameF]);
 
     const ConsultaPoke = () => {
-        setPokemonNameF(document.getElementById('pokemonSearch').value);
+        setPokemonNameF(document.getElementById('pokemonSearch').value.toLowerCase());
     }
     return(
         <section className="">
