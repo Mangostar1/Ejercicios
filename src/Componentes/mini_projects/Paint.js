@@ -1,5 +1,5 @@
 import React from 'react'
-import './Paint.css'
+import './Paint.css';
 
 export default function Paint(){
 

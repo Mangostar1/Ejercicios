@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
+import React from 'react';
 
-import PokeAPI from "Componentes/pokeAPI";
+import PokeAPI from "Componentes/API_projects/pokeAPI";
 import './APIs.css';
 
 export default function APIs() {
