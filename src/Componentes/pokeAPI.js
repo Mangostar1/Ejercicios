@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import 'css/pokeAPI.css';
-// poner linea evolutiva del pokemon con un button que lleve a sus datos en pantalla
 // poner un boton que lleve al siguente pokemon en la pokedex
 function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, height, type, basePokemon, evolution, lastEvolution, basePokemonImg, evolutionImg, lastEvolutionImg}) {
     return(
@@ -120,16 +118,16 @@ export default function PokeAPI() {
         setLastEvolution(Evolution.chain.evolves_to[0].evolves_to[0].species.name);
 
         let dataBasePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${basePokemon}`);
-        let BasePokemon = await dataBasePokemon.json();
-        setBasePokemonImg(BasePokemon.sprites.other.home.front_default);
-
         let dataEvolutionPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${evolution}`);
-        let EvolutionPokemon = await dataEvolutionPokemon.json();
-        setEvolutionImg(EvolutionPokemon.sprites.other.home.front_default);
-
         let dataLastEvolutionPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${lastEvolution}`);
+        let BasePokemon = await dataBasePokemon.json();
+        let EvolutionPokemon = await dataEvolutionPokemon.json();
         let LastEvolutionPokemon = await dataLastEvolutionPokemon.json();
+        
+        setBasePokemonImg(BasePokemon.sprites.other.home.front_default);
+        setEvolutionImg(EvolutionPokemon.sprites.other.home.front_default);
         setLastEvolutionImg(LastEvolutionPokemon.sprites.other.home.front_default);
+
     }
 
     useEffect(() => {
