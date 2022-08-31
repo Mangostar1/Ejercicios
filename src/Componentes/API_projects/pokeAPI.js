@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 // poner un boton que lleve al siguente pokemon en la pokedex
+//Agregar un boton X que al ser precionado borre el nombre escrito en el input text
+//hacer que la tecla enter haga la busqueda del input text y no recargue la pagina
 function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, height, type, basePokemon, evolution, lastEvolution, basePokemonImg, evolutionImg, lastEvolutionImg}) {
     return(
         <div className='flex-col'>
@@ -85,52 +87,60 @@ export default function PokeAPI() {
     const [lastEvolutionImg, setLastEvolutionImg] = useState([]);
 
 
-
-    async function FetchPokemon() {
-        let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
-        let pokemon = await data.json();
-        console.log(pokemon);
-        setPokemonImg(pokemon.sprites.other.home.front_default);
-        setPokemonId(pokemon.id);
-        setStats0(pokemon.stats[0].base_stat);
-        setStats1(pokemon.stats[1].base_stat);
-        setStats2(pokemon.stats[2].base_stat);
-        setStats3(pokemon.stats[3].base_stat);
-        setStats4(pokemon.stats[4].base_stat);
-        setStats5(pokemon.stats[5].base_stat);
-        setPeso(pokemon.weight * 0.1);
-        setAltura(pokemon.height * 10);
-        setTipo(
-            pokemon.types.map((type) => {
-                return type.type.name + ' ';
-            }));
-
-        let urlTest = pokemon.species.url
-        let dataSpecies = await fetch(urlTest);
-        let Species = await dataSpecies.json();
-        let urlEvolution = Species.evolution_chain.url;
-
-        let dataEvolution = await fetch(urlEvolution);
-        let Evolution = await dataEvolution.json();
-
-        setBasePokemon(Evolution.chain.species.name);
-        setEvolution(Evolution.chain.evolves_to[0].species.name);
-        setLastEvolution(Evolution.chain.evolves_to[0].evolves_to[0].species.name);
-
-        let dataBasePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${basePokemon}`);
-        let dataEvolutionPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${evolution}`);
-        let dataLastEvolutionPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${lastEvolution}`);
-        let BasePokemon = await dataBasePokemon.json();
-        let EvolutionPokemon = await dataEvolutionPokemon.json();
-        let LastEvolutionPokemon = await dataLastEvolutionPokemon.json();
-        
-        setBasePokemonImg(BasePokemon.sprites.other.home.front_default);
-        setEvolutionImg(EvolutionPokemon.sprites.other.home.front_default);
-        setLastEvolutionImg(LastEvolutionPokemon.sprites.other.home.front_default);
-
-    }
-
     useEffect(() => {
+        async function FetchPokemon() {
+            try {
+                let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
+                let pokemon = await data.json();
+                console.log(pokemon);
+                setPokemonImg(pokemon.sprites.other.home.front_default);
+                setPokemonId(pokemon.id);
+                setStats0(pokemon.stats[0].base_stat);
+                setStats1(pokemon.stats[1].base_stat);
+                setStats2(pokemon.stats[2].base_stat);
+                setStats3(pokemon.stats[3].base_stat);
+                setStats4(pokemon.stats[4].base_stat);
+                setStats5(pokemon.stats[5].base_stat);
+                setPeso(pokemon.weight * 0.1);
+                setAltura(pokemon.height * 10);
+                setTipo(
+                    pokemon.types.map((type) => {
+                        return type.type.name + ' ';
+                    }));
+    
+                let urlTest = pokemon.species.url
+                let dataSpecies = await fetch(urlTest);
+                let Species = await dataSpecies.json();
+                let urlEvolution = Species.evolution_chain.url;
+    
+                let dataEvolution = await fetch(urlEvolution);
+                let Evolution = await dataEvolution.json();
+    
+                setBasePokemon(Evolution.chain.species.name);
+                setEvolution(Evolution.chain.evolves_to[0].species.name);
+                setLastEvolution(Evolution.chain.evolves_to[0].evolves_to[0].species.name);
+                
+                //hasta aca todo funciona
+
+                let dataBasePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${Evolution.chain.species.name}`);
+                let BasePokemonData = await dataBasePokemon.json();
+                let img1 = await BasePokemonData.sprites.other.home.front_default;
+
+                let dataEvolutionPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${Evolution.chain.evolves_to[0].species.name}`);
+                let EvolutionPokemonData = await dataEvolutionPokemon.json();
+                let img2 = await EvolutionPokemonData.sprites.other.home.front_default;
+
+                let dataLastEvolutionPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${Evolution.chain.evolves_to[0].evolves_to[0].species.name}`);
+                let LastEvolutionPokemonData = await dataLastEvolutionPokemon.json();
+                let img3 = await LastEvolutionPokemonData.sprites.other.home.front_default;
+            
+                setBasePokemonImg(img1);
+                setEvolutionImg(img2);
+                setLastEvolutionImg(img3);
+            } catch (err) {
+                console.error(err);
+            }
+        }
         FetchPokemon();
         return () => {
             setPokemonImg('');
