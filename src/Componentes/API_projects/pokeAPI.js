@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 // poner un boton que lleve al siguente pokemon en la pokedex
 //Agregar un boton X que al ser precionado borre el nombre escrito en el input text
 //hacer que la tecla enter haga la busqueda del input text y no recargue la pagina
+//Agregar un manejador de error que indique al usuario que el nombre del pokemon no existe o esta mal escrito
 function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, height, type, basePokemon, evolution, lastEvolution, basePokemonImg, evolutionImg, lastEvolutionImg}) {
     return(
         <div className='flex-col'>
