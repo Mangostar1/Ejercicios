@@ -5,7 +5,6 @@ import './Control.css';
 export default function Control(props) {
 
     const [contador, setContador] = useState(1);
-//logica de los botones
     const Comp1 = () => {
         setContador(1);
     }
@@ -24,13 +23,13 @@ export default function Control(props) {
 //Control de contenidos con if
     const ControlContenido = () => {
         if (contador === 1) {
-            return props.component_1;
+            return props.component_1;//<-- Componente 1
         } else if (contador === 2) {
-            return props.component_2;
+            return props.component_2;//<-- Componente 2
         } else if (contador === 3) {
-            return props.component_3;
+            return props.component_3;//<-- Componente 3
         } else if (contador === 4) {
-            return props.component_4;
+            return props.component_4;//<-- Componente 4
         }
     }
     return (
