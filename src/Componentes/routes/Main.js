@@ -1,9 +1,9 @@
-import './Main.css';
+import './css/Main.css';
 import Control from 'Componentes/handler/Control';
-import Calculadora from './Componentes/mini_projects/Calculadora';
-import Calorias from './Componentes/mini_projects/Calorias';
-import TicTacToe from './Componentes/mini_projects/TicTacToe';
-import Paint from './Componentes/mini_projects/Paint';
+import Calculadora from '../mini_projects/Calculadora';
+import Calorias from '../mini_projects/Calorias';
+import TicTacToe from '../mini_projects/TicTacToe';
+import Paint from '../mini_projects/Paint';
 
 export default function Main() {
     return (

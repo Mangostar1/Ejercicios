@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
 
 import './index.css';
 import Header from "./Header";
@@ -11,5 +10,3 @@ root.render(
     <Header />
   </React.StrictMode>
 );
-
-reportWebVitals();
