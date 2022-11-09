@@ -78,8 +78,9 @@ export default function PokeAPI() {
                 setBasePokemonImg(img1);
                 setEvolutionImg(img2);
                 setLastEvolutionImg(img3);
+
             } catch (err) {
-                console.error(err);
+                console.error(`${err} %cEl pokemon que has buscado no existe`, 'color: red; background-color: #eff6ff; font-size: 15px; border: 1px solid black; padding: 5px 10px');
             }
         }
         FetchPokemon();
@@ -107,6 +108,7 @@ export default function PokeAPI() {
     const ConsultaPoke = () => {
         setPokemonNameF(document.getElementById('pokemonSearch').value.toLowerCase());
     }
+
     return(
         <section className="">
             <h2 className="font-black text-xl">PokeAPI</h2>
