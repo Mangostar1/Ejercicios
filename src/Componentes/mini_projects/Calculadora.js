@@ -63,7 +63,8 @@ export default function Calculadora(){
     }
 
     function result(){
-        if (document.calculadora.resultado.value === " ") {
+        if (document.calculadora.resultado.value === "") {
+
         } else {
             document.calculadora.resultado.value = eval(document.calculadora.resultado.value);
         }
@@ -97,7 +98,6 @@ export default function Calculadora(){
                 <input type="button" defaultValue="0" id="0" className="buttons" onClick={zero}/>
                 <input type="button" defaultValue="+" id="suma" className="buttons" onClick={sum}/>
 
-                {/* <input type="reset" defaultValue="C" className="buttons"/> */}
                 <input defaultValue="C" className="buttons text-center" onClick={clear}/>
                 <input type="button" defaultValue="=" id="igual" className="buttons" onClick={result}/>                            
             </form>
