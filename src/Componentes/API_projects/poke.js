@@ -3,9 +3,12 @@ import React from 'react';
 export default function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, speed, weight, height, type, basePokemon, evolution, lastEvolution, basePokemonImg, evolutionImg, lastEvolutionImg}) {
     return(
         <div className='flex-col'>
-            <h1 className="font-black">Pokemon</h1>
-            <div className="border border-black">
-                <img className="w-40 m-auto" src={avatar} alt={name}/>
+            <div className="">
+                <div className="flex items-center">
+                    {/* <button className="bg-red-400 py-1 px-2 rounded-lg hover:bg-red-600 ease-in-out duration-300">prev</button> */}
+                    <img className="w-40 m-auto" src={avatar} alt={name}/>
+                    {/* <button className="bg-red-400 py-1 px-2 rounded-lg hover:bg-red-600 ease-in-out duration-300">next</button> */}
+                </div>
                 <p className="px-2"><span className="font-black">Nombre:</span> {name}</p>
                 <p className="px-2"><span className="font-black">N°:</span> {id}</p>
                 <p className="px-2"><span className="font-black">Peso:</span> {weight + ' kg'}</p>
@@ -17,11 +20,11 @@ export default function Poke({name, avatar, id, hp, atk, def, spAtk, spDef, spee
                         <thead>
                             <tr>
                                 <th className="px-2 border border-black bg-slate-300">HP</th>
-                                <th className="px-2 border border-black bg-slate-300">Attack</th>
-                                <th className="px-2 border border-black bg-slate-300">Defense</th>
-                                <th className="px-2 border border-black bg-slate-300">Special Attack</th>
-                                <th className="px-2 border border-black bg-slate-300">Special Defense</th>
-                                <th className="px-2 border border-black bg-slate-300">Speed</th>
+                                <th className="px-2 border border-black bg-slate-300">Ataque</th>
+                                <th className="px-2 border border-black bg-slate-300">Defensa</th>
+                                <th className="px-2 border border-black bg-slate-300">Ataque Especial</th>
+                                <th className="px-2 border border-black bg-slate-300">Defensa Especial</th>
+                                <th className="px-2 border border-black bg-slate-300">Velocidad</th>
                             </tr>
                         </thead>
                         <tbody>

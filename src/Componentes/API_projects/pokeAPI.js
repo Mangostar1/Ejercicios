@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Poke from "./poke";
-// poner un boton que lleve al siguente pokemon en la pokedex
-//Agregar un boton X que al ser precionado borre el nombre escrito en el input text
-//hacer que la tecla enter haga la busqueda del input text y no recargue la pagina
-//Agregar un manejador de error que indique al usuario que el nombre del pokemon no existe o esta mal escrito
+// poner un boton que lleve al siguente pokemon en la pokedex | Botones ya en el DOM, falta plantear la logica de los botones
 
 export default function PokeAPI() {
     const [pokemonNameF, setPokemonNameF] = useState('pikachu');
@@ -33,7 +30,7 @@ export default function PokeAPI() {
             try {
                 let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
                 let pokemon = await data.json();
-                console.log(pokemon);
+                //console.log(pokemon);
                 setPokemonImg(pokemon.sprites.other.home.front_default);
                 setPokemonId(pokemon.id);
                 setStats0(pokemon.stats[0].base_stat);
@@ -109,12 +106,17 @@ export default function PokeAPI() {
         setPokemonNameF(document.getElementById('pokemonSearch').value.toLowerCase());
     }
 
+    const clear = () => {
+        document.getElementById('pokemonSearch').value = "";
+    }
+
     return(
         <section className="">
-            <h2 className="font-black text-xl">PokeAPI</h2>
-            <form className="">
+            <h2 className="font-black text-xl text-center hover:text-amber-300">PokeAPI</h2>
+            <form className="relative">
                 <label className="px-2" htmlFor="pokemonSearch">Buscar Pokemon:</label>
-                <input type="text" id="pokemonSearch" placeholder="Pokemon" className="py-1 px-2"/>
+                <input type="text" id="pokemonSearch" placeholder="Pokemon" className="py-1 px-2 bg-gray-100"/>
+                <input type="button" value="X" onClick={clear} className="font-bold text-black -ml-4 mr-2 z-30 hover:text-red-400" />
                 <input type="button" value="Buscar" onClick={ConsultaPoke} className='bg-sky-50 hover:bg-sky-200 py-1 px-2 ease-in-out duration-300' />
             </form>
             <Poke name={pokemonNameF} avatar={pokemonImg} id={pokemonId} key={pokemonId} 
