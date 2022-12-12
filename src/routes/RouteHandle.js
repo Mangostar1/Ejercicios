@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Main from "../pages/Main";
-import APIs from '../pages/APIs';
+import Main from "../pages/mainPage/Main";
+import APIs from '../pages/apisPage/APIs';
 
 export default function RouteHandle() {
     return(
