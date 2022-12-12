@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 
-import Main from "./Componentes/routes/Main";
-import APIs from './Componentes/routes/APIs';
+import Main from "./routes/Main";
+import APIs from './routes/APIs';
 import logo from 'img/logo_omar.png';
 import './Header.css';
 
