@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Main from "./Main";
-import APIs from './APIs';
+import Main from "../pages/Main";
+import APIs from '../pages/APIs';
 
-export default function RoutesPages() {
+export default function RouteHandle() {
     return(
         <BrowserRouter>
             <Routes>
