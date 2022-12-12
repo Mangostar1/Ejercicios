@@ -1,22 +1,9 @@
-import React,{ useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
 
-import Main from "./routes/Main";
-import APIs from './routes/APIs';
 import logo from 'img/logo_omar.png';
 import './Header.css';
 
 export default function Header() {
-
-    const [nav, setNav] = useState(0);
-
-    const handleNav = (e) => {
-        if (e.target.id === "nav-home") {
-            setNav(0);
-        } else if (e.target.id === "nav-about") {
-            setNav(1);
-        }
-    }
 
     return(
         <>
