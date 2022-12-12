@@ -21,7 +21,7 @@ export default function Control(props) {
         setContador(4);
     }
 //Control de contenidos con if
-    const ControlContenido = () => {
+    const ControlContenido = () => {//<-- Este renderiza al componente deseado segun el state
         if (contador === 1) {
             return props.component_1;//<-- Componente 1
         } else if (contador === 2) {
