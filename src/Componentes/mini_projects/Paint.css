@@ -38,7 +38,7 @@
     height: 35px;
     display: flex;
 
-    background-image: url(img/pencil-svgrepo-com.svg);
+    background-image: url(../../assets/img/pencil-svgrepo-com.svg);
     background-color: gray;
     border-radius: 10%;
 }
@@ -55,7 +55,7 @@
     height: 35px;
     display: flex;
 
-    background-image: url(img/eraser-svgrepo-com.svg);
+    background-image: url(../../assets/img/eraser-svgrepo-com.svg);
     background-color: gray;
     border-radius: 10%;
 }

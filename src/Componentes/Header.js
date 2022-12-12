@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from 'img/logo_omar.png';
+import logo from '../assets/img/logo_omar.png';
 import './Header.css';
 
 export default function Header() {

@@ -51,14 +51,14 @@
 }
 
 #circleLabel::after{
-    background-image: url("img/circle-svgrepo-com.svg");
+    background-image: url(../../assets/img/circle-svgrepo-com.svg);
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: center;
     display: var(--displayChangeCir, inline-block);
 }
 #crossLabel::after{
-    background-image: url("img/x-lg-svgrepo-com.svg");
+    background-image: url(../../assets/img/x-lg-svgrepo-com.svg);
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: center;
