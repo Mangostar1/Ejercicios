@@ -1,7 +1,7 @@
 import React,{ Component} from 'react'
 
-import cross from "../../assets/img/x-lg-svgrepo-com.svg";
-import circle from "../../assets/img/circle-svgrepo-com.svg";
+import cross from "../../../assets/img/x-lg-svgrepo-com.svg";
+import circle from "../../../assets/img/circle-svgrepo-com.svg";
 import './TicTacToe.css';
 
 export default class TicTacToe extends Component {
