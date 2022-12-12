@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Main from "./routes/Main";
 import APIs from './routes/APIs';
@@ -27,12 +28,11 @@ export default function Header() {
                     </a>
                 </div>
                 <ul className="menu">
-                    <li id="nav-home" className="link" onClick={handleNav}>Inicio</li>
-                    <li id="nav-about" className="link" onClick={handleNav}>APIs</li>
+                    <li id="nav-home" className="link" ><a href='/'>Inicio</a></li>
+                    <li id="nav-about" className="link" ><a href='/apis'>APIs</a></li>
                 </ul>
             </nav>
         </header>
-        {nav === 0 ? <Main /> : <APIs />}
         </>
     );
 }
