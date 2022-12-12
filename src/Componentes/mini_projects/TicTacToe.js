@@ -22,6 +22,7 @@ export default class TicTacToe extends Component {
         jugador: 0,
         ia: 0,
         iaPlay: '',
+        celdas: [null, null, null, null, null, null, null, null, null]
     }
 
     circle = () => {
@@ -76,6 +77,7 @@ export default class TicTacToe extends Component {
                 celda1: 'X',
                 turno: 'X',
             });
+            //this.setState.celdas.push('X');
             document.getElementById('celda1').style.cssText = `background-image: url("${cross}");`;
             this.Win();
             this.IA();

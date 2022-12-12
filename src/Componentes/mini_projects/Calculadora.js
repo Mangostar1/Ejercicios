@@ -63,10 +63,15 @@ export default function Calculadora(){
     }
 
     function result(){
-        if (document.calculadora.resultado.value === " ") {
+        if (document.calculadora.resultado.value === "") {
+
         } else {
             document.calculadora.resultado.value = eval(document.calculadora.resultado.value);
         }
+    }
+
+    const clear = () => {
+        document.getElementById('resultados').value = "";
     }
 
     return(
@@ -74,7 +79,7 @@ export default function Calculadora(){
             <form action="" name="calculadora">
                 <input type="textfield" name="resultado" defaultValue="" id="resultados" readOnly />
 
-                <input type="button" defaultValue="7" id="7" className="buttons" onClick={seven}/> {/* en html es value, en JSX es defaultValue */}
+                <input type="button" defaultValue="7" id="7" className="buttons" onClick={seven}/>
                 <input type="button" defaultValue="8" id="8" className="buttons" onClick={eight}/>
                 <input type="button" defaultValue="9" id="9" className="buttons" onClick={nine}/>
                 <input type="button" defaultValue="/" id="divicion" className="buttons" onClick={div}/>
@@ -93,7 +98,7 @@ export default function Calculadora(){
                 <input type="button" defaultValue="0" id="0" className="buttons" onClick={zero}/>
                 <input type="button" defaultValue="+" id="suma" className="buttons" onClick={sum}/>
 
-                <input type="reset" defaultValue="C" className="buttons"/>
+                <input defaultValue="C" className="buttons text-center" onClick={clear}/>
                 <input type="button" defaultValue="=" id="igual" className="buttons" onClick={result}/>                            
             </form>
         </div>

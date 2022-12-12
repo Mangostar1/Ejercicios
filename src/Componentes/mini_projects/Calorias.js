@@ -78,9 +78,9 @@ function calculo() {
                 <input type="radio" name="actividadFisic" id="actividad_5" />
                 <label htmlFor="actividad_5" className="label_actividad">Entreno de manera intensa 2 veces al dia</label>
 
-                <input type="button" defaultValue="Enviar" id="enviar" onClick={calculo}/>
+                <input type="button" defaultValue="Enviar" id="enviar" onClick={calculo} className="bg-slate-100"/>
                 <input type="text" name="resulta" id="resulta" defaultValue="" readOnly /> {/* readonly de html en JSX es readOnly */}
-                <input type="reset" defaultValue="Borrar" id="reset" />
+                <input type="reset" defaultValue="Borrar" id="reset" className="bg-slate-100"/>
             </form>
         </div>
     );
