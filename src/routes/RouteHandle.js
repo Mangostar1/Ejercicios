@@ -9,6 +9,7 @@ export default function RouteHandle() {
             <Routes>
                 <Route path='/' element={<Main />}/>
                 <Route path='/apis' element={<APIs />}/>
+                <Route path='*' element={<h1> Error 404</h1>}/>
             </Routes>
         </BrowserRouter>
     );
