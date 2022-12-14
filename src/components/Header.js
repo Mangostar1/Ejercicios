@@ -18,6 +18,9 @@ export default function Header() {
                     <li id="nav-home" className="link" ><a href='/'>Inicio</a></li>
                     <li id="nav-about" className="link" ><a href='/apis'>APIs</a></li>
                 </ul>
+                <ul className="menu">
+                    <li id="nav-home" className="link" ><a href='/login'>Login</a></li>
+                </ul>
             </nav>
         </header>
         </>
