@@ -5,6 +5,7 @@
 .nav{
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
     gap: 2em;
 }
 
@@ -16,6 +17,10 @@
     width: 150px;
 }
 
+.menu-content{
+    display: flex;
+    gap: 3rem;
+}
 .menu{
     list-style: none;
     display: flex;

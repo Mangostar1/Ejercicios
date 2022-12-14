@@ -4,7 +4,6 @@ import logo from 'assets/img/logo_omar.png';
 import './Header.css';
 
 export default function Header() {
-
     return(
         <>
         <header className="header">
