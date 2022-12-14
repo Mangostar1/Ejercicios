@@ -1,5 +1,5 @@
 import './Main.css';
-import Control from 'Componentes/handler/Control';
+import Control from 'components/handler/Control';
 import Calculadora from './mini_projects/Calculadora';
 import Calorias from './mini_projects/Calorias';
 import TicTacToe from './mini_projects/TicTacToe';

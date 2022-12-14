@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Footer from '../../Componentes/Footer';
+import Footer from '../../components/Footer';
 
 export default function Error404() {
     return(
