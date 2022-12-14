@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+
+import Footer from '../../Componentes/Footer';
 
 export default function Error404() {
     return(
-        <div>
-            <h1>Error 404 - Pagina no encontrada</h1>
-        </div>
+        <>
+            <main className='h-screen'>
+                <h1 className='text-lg font-bold'>Error 404 - Pagina no encontrada</h1>
+            </main>
+            <Footer />
+        </>
     )
 }
