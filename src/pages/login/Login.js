@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import axios from 'axios';
+
 import Footer from "components/Footer";
 
 export default function Login() {
@@ -15,22 +17,25 @@ export default function Login() {
     }
 
     const sendLogin = async() => {
-        console.log(body.username, body.password);
 
-        try {
-            await fetch('https://learn-backend-node-express-production.up.railway.app/api/login', {
+        axios.post('http://localhost:5001/api/login', body)
+            .then(({data}) => {
+                console.log(data)
+            })
+            .catch(({response}) => {
+                console.log(response.data)
+            })
+        /*  try {
+            await fetch('http://localhost:5001/api/login', {
                 method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "username": `${body.username}`,
-                    "password": `${body.password}`
-                })
-            });
-        } catch (error) {
-            console.error(error, 'Ocurrio un error 😒');
-        }
+                body: body
+            })
+            .then(() => {
+                console.log('conexion exitosa 😎');
+            })
+        } catch (err) {
+            console.log(err.status, err, 'Ocurrio un error 😒');
+        } */
 
     }
 
