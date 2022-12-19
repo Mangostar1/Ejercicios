@@ -14,6 +14,7 @@ export default function RouteHandle() {
     return(
         <>
             <BrowserRouter>
+
                 <header className="header">
                     <nav className="nav">
                         <div className="logo-content">
@@ -38,6 +39,7 @@ export default function RouteHandle() {
                         </div>
                     </nav>
                 </header>
+
                 <Routes>
                     <Route path='/' element={<Main />}/>
                     <Route path='/apis' element={<APIs />}/>
@@ -45,6 +47,7 @@ export default function RouteHandle() {
                     <Route path='/dashboard' element={<Dashboard />}/>
                     <Route path='*' element={<Error404 />}/>
                 </Routes>
+                
             </BrowserRouter>
         </>
     );
