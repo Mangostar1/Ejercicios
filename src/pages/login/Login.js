@@ -7,6 +7,8 @@ import Footer from "components/Footer";
 export default function Login() {
     
     const [body, setBody] = useState({username: '', password: ''});
+    const [user, setUser] = useState(null);
+    const [isLogged, setIsLogged] = useState(false);
     
     const inputChange = ({target}) => {
         const {name, value} = target
@@ -20,23 +22,16 @@ export default function Login() {
 
         axios.post('http://localhost:5001/api/login', body)
             .then(({data}) => {
-                console.log(data)
+                console.log(data);
+                
+                setUser(data.username);
+                setIsLogged(true)
+
+                console.log(user, isLogged);
             })
             .catch(({response}) => {
                 console.log(response.data)
             })
-        /*  try {
-            await fetch('http://localhost:5001/api/login', {
-                method: 'POST',
-                body: body
-            })
-            .then(() => {
-                console.log('conexion exitosa 😎');
-            })
-        } catch (err) {
-            console.log(err.status, err, 'Ocurrio un error 😒');
-        } */
-
     }
 
     return(
