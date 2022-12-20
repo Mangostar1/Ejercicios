@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import Footer from "components/Footer";
-import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     
     const [body, setBody] = useState({username: '', password: ''});
-    const [user, setUser] = useState(null);
-    const [isLogged, setIsLogged] = useState(false);
-
+    let navigate = useNavigate();
+    
     const inputChange = ({target}) => {
         const {name, value} = target
         setBody({
@@ -18,16 +17,15 @@ export default function Login() {
         })
     }
 
-    const sendLogin = async() => {
+    const sendLogin = async() => { //<-- Hace un post a la API con los datos del formulario, para validar si el usuario existe o no en la base de datos 
 
         axios.post('https://learn-backend-node-express-production.up.railway.app/api/login', body)
             .then(({data}) => {
                 console.log(data);
-                
-                setUser(data.username);
-                setIsLogged(true)
 
-                console.log(user, isLogged);
+                localStorage.setItem('auth', "yes");
+                navigate("/dashboard");
+                /* console.log(localStorage.getItem('auth')); */
             })
             .catch(({response}) => {
                 console.log(response.data)
