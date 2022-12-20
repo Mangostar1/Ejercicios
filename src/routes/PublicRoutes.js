@@ -10,7 +10,7 @@ import Login from '../pages/login/Login';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Error404 from 'pages/404/Error404';
 
-export default function RouteHandle() {
+export default function PublicRoutes() {
     return(
         <>
             <BrowserRouter>
