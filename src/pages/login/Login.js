@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-
 import axios from 'axios';
 
 import Footer from "components/Footer";
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     
     const [body, setBody] = useState({username: '', password: ''});
     const [user, setUser] = useState(null);
     const [isLogged, setIsLogged] = useState(false);
-    
+
     const inputChange = ({target}) => {
         const {name, value} = target
         setBody({
@@ -20,7 +20,7 @@ export default function Login() {
 
     const sendLogin = async() => {
 
-        axios.post('http://localhost:5001/api/login', body)
+        axios.post('https://learn-backend-node-express-production.up.railway.app/api/login', body)
             .then(({data}) => {
                 console.log(data);
                 
