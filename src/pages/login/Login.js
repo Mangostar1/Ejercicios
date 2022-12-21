@@ -21,14 +21,16 @@ export default function Login() {
 
         axios.post('https://learn-backend-node-express-production.up.railway.app/api/login', body)
             .then(({data}) => {
-                console.log(data);
+                //console.log(data);
 
                 localStorage.setItem('auth', "yes");
                 navigate("/dashboard");
-                /* console.log(localStorage.getItem('auth')); */
+                localStorage.getItem('auth');//<-- Para leer el contenido del 'auth' en el localStorage
+                /* localStorage.clear();//<-- Para limpiar el localStorage */
+                /* console.log(localStorage.getItem('auth') === 'yes'); */
             })
             .catch(({response}) => {
-                console.log(response.data)
+                console.error(response.data)
             })
     }
 

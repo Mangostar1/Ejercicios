@@ -9,6 +9,7 @@ import APIs from '../pages/apisPage/APIs';
 import Login from '../pages/login/Login';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Error404 from 'pages/404/Error404';
+import PrivateRoutes from './PrivateRoutes';
 
 export default function PublicRoutes() {
     return(
@@ -44,7 +45,7 @@ export default function PublicRoutes() {
                     <Route path='/' element={<Main />}/>
                     <Route path='/apis' element={<APIs />}/>
                     <Route path='/login' element={<Login />}/>
-                    <Route path='/dashboard' element={<Dashboard />}/>
+                    <Route path='/dashboard' element={<PrivateRoutes> <Dashboard /> </PrivateRoutes>}/>
                     <Route path='*' element={<Error404 />}/>
                 </Routes>
                 
