@@ -13,7 +13,6 @@ import PrivateRoutes from './PrivateRoutes';
 
 export default function PublicRoutes() {
     return(
-        <>
             <BrowserRouter>
 
                 <header className="header">
@@ -50,6 +49,5 @@ export default function PublicRoutes() {
                 </Routes>
                 
             </BrowserRouter>
-        </>
     );
 }
