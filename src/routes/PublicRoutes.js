@@ -10,6 +10,7 @@ import Login from '../pages/login/Login';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Error404 from 'pages/404/Error404';
 import PrivateRoutes from './PrivateRoutes';
+import LoginHandle from 'components/LoginHandle';
 
 export default function PublicRoutes() {
     return(
@@ -33,7 +34,7 @@ export default function PublicRoutes() {
                             </ul>
                             <ul className="menu">
                                 <li id="nav-home" className="link" >
-                                    <Link to='/login'>Login</Link>
+                                    <LoginHandle />
                                 </li>
                             </ul>
                         </div>
