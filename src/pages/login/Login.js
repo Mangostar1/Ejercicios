@@ -34,8 +34,8 @@ export default function Login() {
 
     return(
         <>
-            <main className=''>
-                <form className="bg-gray-200 flex flex-col items-center justify-center px-6 py-8 w-60 m-auto gap-2">
+            <main className='min-h-screen-3/4 flex'>
+                <form className="bg-gray-200 flex flex-col items-center justify-center px-6 py-8 w-60 m-auto gap-2 rounded shadow-lg">
                     <div>
                         <label htmlFor='user' className=''>User:</label>
                         <input type="text" placeholder="User" value={body.username} onChange={inputChange} name='username' id='user' className="bg-gray-100 py-1 px-2 w-full border rounded border-gray-300 focus:border-green-600 focus:outline-none" />
