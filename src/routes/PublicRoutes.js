@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import logo from 'assets/img/logo_omar.png';
@@ -13,6 +13,11 @@ import PrivateRoutes from './PrivateRoutes';
 import LoginHandle from 'components/LoginHandle';
 
 export default function PublicRoutes() {
+
+    useEffect(() => {
+        
+    },[])
+
     return(
             <BrowserRouter>
 

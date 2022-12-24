@@ -30,7 +30,6 @@ export default function PokeAPI() {
             try {
                 let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameF}`);
                 let pokemon = await data.json();
-                //console.log(pokemon);
                 setPokemonImg(pokemon.sprites.other.home.front_default);
                 setPokemonId(pokemon.id);
                 setStats0(pokemon.stats[0].base_stat);
