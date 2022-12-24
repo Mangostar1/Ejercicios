@@ -21,14 +21,11 @@ export default function Login() {
 
         axios.post('https://learn-backend-node-express-production.up.railway.app/api/login', body)
             .then(({data}) => {
-                //console.log(data);
 
                 localStorage.setItem('auth', "yes");
                 navigate("/dashboard");
                 localStorage.getItem('auth');//<-- Para leer el contenido del 'auth' en el localStorage
                 window.location.replace('');
-                /* localStorage.clear();//<-- Para limpiar el localStorage */
-                /* console.log(localStorage.getItem('auth') === 'yes'); */
             })
             .catch(({response}) => {
                 console.error(response.data)
@@ -48,7 +45,7 @@ export default function Login() {
                         <label htmlFor='pass' className=''>Password:</label>
                         <input type="password" placeholder="Password" value={body.password} onChange={inputChange} name='password' id='pass' className="bg-gray-100 py-1 px-2 w-full border rounded border-gray-300 focus:border-green-600 focus:outline-none" />
                     </div>
-                    <input type="button" value="Login" onClick={sendLogin} className="transition duration-500 ease-in-out bg-gray-300 hover:bg-gray-400 py-1 px-2 w-full rounded" />
+                    <input type="button" value="Login" onClick={sendLogin} className="transition duration-800 ease-in-out bg-gray-300 hover:bg-gray-400 py-1 px-2 w-full rounded active:bg-green-600" />
                 </form>
             </main>
             <Footer />
