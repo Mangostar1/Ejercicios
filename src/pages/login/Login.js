@@ -26,7 +26,7 @@ export default function Login() {
                 localStorage.setItem('auth', "yes");
                 navigate("/dashboard");
                 localStorage.getItem('auth');//<-- Para leer el contenido del 'auth' en el localStorage
-                /* window.location.replace(''); */
+                window.location.replace('');
                 /* localStorage.clear();//<-- Para limpiar el localStorage */
                 /* console.log(localStorage.getItem('auth') === 'yes'); */
             })
