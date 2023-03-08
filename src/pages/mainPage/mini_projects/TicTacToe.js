@@ -1,362 +1,158 @@
-import React,{ Component} from 'react'
+import React, { Component, useState, useId, useRef } from 'react'
 
-import cross from "assets/img/x-lg-svgrepo-com.svg";
-import circle from "assets/img/circle-svgrepo-com.svg";
+import crossImg from 'assets/img/x-lg-svgrepo-com.svg';
+import circleImg from 'assets/img/circle-svgrepo-com.svg';
 import './TicTacToe.css';
 
-export default class TicTacToe extends Component {
+
+export default function TicTacToe() {
     
-    state = {
-        ps1Play: 0,
-        turno: '',
-        celda1: '',
-        celda2: '',
-        celda3: '',
-        celda4: '',
-        celda5: '',
-        celda6: '',
-        celda7: '',
-        celda8: '',
-        celda9: '',
-        ganador: '',
-        jugador: 0,
-        ia: 0,
-        iaPlay: '',
-        celdas: [null, null, null, null, null, null, null, null, null]
-    }
+    /* States */
+    const [win, setWin] = useState(0);//<-- Para saber quien de los dos jugadores gano
+    const [play_IA, setPlayIA] = useState(false);//<-- Usado para saber si se jugara en contra de la IA o no
+    const [turn, setTurn] = useState(0);//<-- Para saber de quien es el turno actualmente
+    const [playerOne, setPlayerOne] = useState('');//<-- Util para saber si el jugador 1 usara cruz o circulo
+    const [cells, setCells] = useState([
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ]);
 
-    circle = () => {
-        this.setState(
-            {ps1Play: 2, iaPlay: 'cross'}
-        );
-        this.crossLabel = document.getElementById('crossLabel');
-        this.crossLabel.style.cssText = `background-color: #f0f0f0; color: black; padding: 5px 5px 5px 5px;`;
-        this.psClassCross = window.getComputedStyle(this.crossLabel, '::after');
-        this.crossLabel.style.setProperty('--displayChangeCro', 'none');
+    /* IDs */
+    const cell_1 = useId();
+    const cell_2 = useId();
+    const cell_3 = useId();
+    const cell_4 = useId();
+    const cell_5 = useId();
+    const cell_6 = useId();
+    const cell_7 = useId();
+    const cell_8 = useId();
+    const cell_9 = useId();
+
+    /* Functions */
+
+    const circle = () => {//<-- If player one choose circle
+        const crossLabel = document.getElementById('crossLabel');
+        crossLabel.style.cssText = `background-color: #f0f0f0; color: black; padding: 5px 5px 5px 5px;`;
+        
+        window.getComputedStyle(crossLabel, '::after');
+        crossLabel.style.setProperty('--displayChangeCro', 'none');
+        
         //se cambian estilos al otro input radio
-        this.circleLabel = document.getElementById('circleLabel');
-        this.circleLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
-        this.psClassCircle = window.getComputedStyle(this.circleLabel, '::after');
-        this.circleLabel.style.setProperty('--displayChangeCir', 'inline-block');
+        const circleLabel = document.getElementById('circleLabel');
+        circleLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
+        
+        window.getComputedStyle(circleLabel, '::after');
+        circleLabel.style.setProperty('--displayChangeCir', 'inline-block');
+
+        setPlayerOne('circle');
     }
-    
-    cross = () => {
-        this.setState(
-            {ps1Play: 1, iaPlay: 'circle'}
-        );
-        this.circleLabel = document.getElementById('circleLabel');
-        this.circleLabel.style.cssText = `background-color: #f0f0f0; color: black; padding: 5px 5px 5px 5px;`;
-        this.psClassCircle = window.getComputedStyle(this.circleLabel, '::after');
-        this.circleLabel.style.setProperty('--displayChangeCir', 'none');
+
+    const cross = () => {//<-- If player one choose cross
+        const circleLabel = document.getElementById('circleLabel');
+        circleLabel.style.cssText = `background-color: #f0f0f0; color: black; padding: 5px 5px 5px 5px;`;
+        
+        window.getComputedStyle(circleLabel, '::after');
+        circleLabel.style.setProperty('--displayChangeCir', 'none');
+        
         //se cambian estilos al otro input radio
-        this.crossLabel = document.getElementById('crossLabel');
-        this.crossLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
-        this.psClassCross = window.getComputedStyle(this.crossLabel, '::after');
-        this.crossLabel.style.setProperty('--displayChangeCro', 'inline-block');
+        const crossLabel = document.getElementById('crossLabel');
+        crossLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
+        
+        window.getComputedStyle(crossLabel, '::after');
+        crossLabel.style.setProperty('--displayChangeCro', 'inline-block');
+
+        setPlayerOne('cross');
     }
 
-    VsIa = () => {//no hace nada aun
-        this.setState(
-            {ia: 1, jugador: 0}
-        )
+
+    const Celda1 = () => {
+
+        if (playerOne === 'cross') {
+            document.querySelector('.cell_1').style.cssText = `background-image: url("${crossImg}");`;
+        }
+        if (playerOne === 'circle') {
+            document.querySelector('.cell_1').style.cssText = `background-image: url("${circleImg}");`;
+        }
+
+        if (playerOne === '') {
+            Alert();
+        }
     }
 
-    VsPlayer = () => {//no hace nada aun
-        this.setState(
-            {jugador: 1, ia: 0}
-        )
+    const handleCells = ({target}) => {
+        
+        if (target.id === cell_1) {
+            console.log('seleccionaste la selda 1');
+            Celda1();
+        }
+
+        if (target.id === cell_2) {
+            console.log('seleccionaste la selda 2')
+        }
+
+        if (target.id === cell_3) {
+            console.log('seleccionaste la selda 3')
+        }
+
+        if (target.id === cell_4) {
+            console.log('seleccionaste la selda 4')
+        }
+
+        if (target.id === cell_5) {
+            console.log('seleccionaste la selda 5')
+        }
+
+        if (target.id === cell_6) {
+            console.log('seleccionaste la selda 6')
+        }
+
+        if (target.id === cell_7) {
+            console.log('seleccionaste la selda 7')
+        }
+
+        if (target.id === cell_8) {
+            console.log('seleccionaste la selda 8')
+        }
+
+        if (target.id === cell_9) {
+            console.log('seleccionaste la selda 9')
+        }
     }
 
-    Alerta = () => {
+    const Alert = () => {
         alert('Selecciona una opcion entre X y O por favor');
     }
 
-    Celda1 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda1: 'X',
-                turno: 'X',
-            });
-            //this.setState.celdas.push('X');
-            document.getElementById('celda1').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda1: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda1').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda2 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda2: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda2').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda2: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda2').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda3 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda3: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda3').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda3: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda3').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda4 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda4: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda4').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda4: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda4').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda5 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda5: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda5').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda5: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda5').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda6 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda6: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda6').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda6: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda6').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda7 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda7: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda7').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda7: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda7').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda8 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda8: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda8').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda8: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda8').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-        
-        } else {
-            this.Alerta();
-        }
-    }
-
-    Celda9 = () => {
-        if (this.state.ps1Play === 1) {
-            this.setState({
-                celda9: 'X',
-                turno: 'X',
-            });
-            document.getElementById('celda9').style.cssText = `background-image: url("${cross}");`;
-            this.Win();
-            this.IA();
-        
-        } else if (this.state.ps1Play === 2) {
-            this.setState({
-                celda9: 'O',
-                turno: 'O',
-            });
-            document.getElementById('celda9').style.cssText = `background-image: url("${circle}");`;
-            this.Win();
-            this.IA();
-
-        } else {
-            this.Alerta();
-        }
-    }
-
-    IA = () => {
-        if (this.state.ia === 0) {
-            console.log('Selecciona una opcion, desde IA');
-        } else if (this.state.ia === 1) {
-            console.log('IA seleccionada como jugador contrario, IA hace algo');
-            
-            if (this.state.iaPlay === 'cross') {
-                console.log('IA usa X');
-            } else if (this.state.iaPlay === 'circle') {
-                console.log('IA usa O');
-            }
-        }
-    }
-
-    Player2 = () => {
-        if (this.state.ps2Play === 1) {
-            console.log('Player2 seleccionado como jugador contrario, Player2 hace algo');
-        }
-    }
-
-    Reiniciar = () => {
-        console.log('reiniciar');
-    }
-
-    Win = () => {
-        if (this.state.celda1 === 'X' && this.state.celda2 === 'X' && this.state.celda3 === 'X') {
-            this.setState({
-                ganador: 'X',
-            });
-            alert(`Ganador X`);
-        } else if (this.state.celda4 === 'X' && this.state.celda5 === 'X' && this.state.celda6 === 'X') {
-            this.setState({
-                ganador: 'X',
-            });
-            alert(`Ganador X`);
-        }
-    }
-
-    render() {
-        return(
-            <div>
+    return(
+        <div>
                 <h1>TicTacToe</h1>
                 <div className="tictactoe">
                     <h3>Elige una opcion</h3>
                     <form id='selectChoise'>
-                        <input type="radio" name="chose" id="circle" onClick={this.circle} />
+                        <input type="radio" name="chose" id="circle" onClick={circle} />
                         <label htmlFor="circle" id="circleLabel">Circulo</label>
-                        <input type="radio" name="chose" id="cross" onClick={this.cross} />
+                        <input type="radio" name="chose" id="cross" onClick={cross} />
                         <label htmlFor="cross" id="crossLabel">Cruz</label>
                     </form>
                     <form id='vsChose'>
                         <label htmlFor="ia">Vs IA</label>
-                        <input type="radio" name="chose" id="ia" onClick={this.VsIa} />
+                        <input type="radio" name="chose" id="ia" />
                         <label htmlFor="player">Vs Player</label>
-                        <input type="radio" name="chose" id="player" onClick={this.VsPlayer} />
+                        <input type="radio" name="chose" id="player" />
                     </form>
                     <div id="tablero">
-                        <div id="celda1" className="celdas" onClick={this.Celda1}></div>
-                        <div id="celda2" className="celdas" onClick={this.Celda2}></div>
-                        <div id="celda3" className="celdas" onClick={this.Celda3}></div>
-                        <div id="celda4" className="celdas" onClick={this.Celda4}></div>
-                        <div id="celda5" className="celdas" onClick={this.Celda5}></div>
-                        <div id="celda6" className="celdas" onClick={this.Celda6}></div>
-                        <div id="celda7" className="celdas" onClick={this.Celda7}></div>
-                        <div id="celda8" className="celdas" onClick={this.Celda8}></div>
-                        <div id="celda9" className="celdas" onClick={this.Celda9}></div>
+                        <div id={cell_1} className="cells cell_1" onClick={handleCells}></div>
+                        <div id={cell_2} className="cells cell_2" onClick={handleCells}></div>
+                        <div id={cell_3} className="cells cell_3" onClick={handleCells}></div>
+                        <div id={cell_4} className="cells cell_4" onClick={handleCells}></div>
+                        <div id={cell_5} className="cells cell_5" onClick={handleCells}></div>
+                        <div id={cell_6} className="cells cell_6" onClick={handleCells}></div>
+                        <div id={cell_7} className="cells cell_7" onClick={handleCells}></div>
+                        <div id={cell_8} className="cells cell_8" onClick={handleCells}></div>
+                        <div id={cell_9} className="cells cell_9" onClick={handleCells}></div>
                     </div>
                 </div>
             </div>
-        );
-    }
+    )
 }

@@ -10,11 +10,11 @@
     grid-gap: 2px;
 }
 
-.celdas{
+.cells{
     background-color: #f0f0f0;
 }
 
-#celda1, #celda2, #celda3, #celda4, #celda5, #celda6, #celda7, #celda8, #celda9{
+.cell_1, .cell_2, .cell_3, .cell_4, .cell_5, .cell_6, .cell_7, .cell_8, .cell_9{
     background-repeat: no-repeat;
     background-size: 80px;
     background-position: center;
