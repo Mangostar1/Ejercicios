@@ -35,7 +35,7 @@
     background-color: #f0f0f0;
     color: black;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all .4s ease;
 }
 
 #circleLabel::after,
@@ -75,4 +75,27 @@
 
 #vsChose{
     margin: 10px 0;
+}
+
+#vsChose input{
+    display: none;
+}
+
+#vsChose label{
+    padding: 5px;
+    color: black;
+    background-color: #f0f0f0;
+    transition: all .4s ease;
+}
+
+#vsChose .inputIA:checked + label{
+    background-color: tomato;
+    color: white;
+    padding: 5px;
+}
+
+#vsChose .inputPlayer:checked + label{
+    background-color: tomato;
+    color: white;
+    padding: 5px;
 }

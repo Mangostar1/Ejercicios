@@ -153,20 +153,21 @@ export default function TicTacToe() {
 
     return(
         <div>
-                <h1>TicTacToe</h1>
+                <h1 className='text-center'>TicTacToe</h1>
                 <div className="tictactoe">
-                    <h3>Elige una opcion</h3>
+                    <h3>Elige una opcion:</h3>
                     <form id='selectChoise'>
                         <input type="radio" name="chose" id="circle" onClick={circle} />
                         <label htmlFor="circle" id="circleLabel">Circulo</label>
                         <input type="radio" name="chose" id="cross" onClick={cross} />
                         <label htmlFor="cross" id="crossLabel">Cruz</label>
                     </form>
+                    <h3>Elige contra quien jugar:</h3>
                     <form id='vsChose'>
-                        <input type="radio" name="chose" id={vsIA} onClick={handleChose} defaultChecked/>
-                        <label htmlFor={vsIA}>Vs IA</label>
-                        <input type="radio" name="chose" id={vsPlayer} onClick={handleChose} />
-                        <label htmlFor={vsPlayer}>Vs Player</label>
+                        <input type="radio" name="chose" id={vsIA} onClick={handleChose} defaultChecked className="inputIA vsRadio"/>
+                        <label htmlFor={vsIA} className="vsIA">Vs IA</label>
+                        <input type="radio" name="chose" id={vsPlayer} onClick={handleChose} className="inputPlayer vsRadio" />
+                        <label htmlFor={vsPlayer} className="vsPlayer">Vs Player</label>
                     </form>
                     <div id="tablero">
                         <div id={cell_1} className="cells cell_1" onClick={handleCells}></div>
