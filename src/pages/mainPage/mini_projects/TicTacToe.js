@@ -1,4 +1,4 @@
-import React, { Component, useState, useId, useRef } from 'react'
+import React, { useState, useId, useEffect } from 'react';
 
 import crossImg from 'assets/img/x-lg-svgrepo-com.svg';
 import circleImg from 'assets/img/circle-svgrepo-com.svg';
@@ -8,10 +8,11 @@ import './TicTacToe.css';
 export default function TicTacToe() {
     
     /* States */
-    const [win, setWin] = useState(0);//<-- Para saber quien de los dos jugadores gano
+    const [win, setWin] = useState('');//<-- Para saber quien de los dos jugadores gano
     const [play_IA, setPlayIA] = useState(false);//<-- Usado para saber si se jugara en contra de la IA o no
     const [turn, setTurn] = useState(0);//<-- Para saber de quien es el turno actualmente
     const [playerOne, setPlayerOne] = useState('');//<-- Util para saber si el jugador 1 usara cruz o circulo
+    const [playerTwo, setPlayerTwo] = useState('');//<-- Util para saber si el jugador 1 usara cruz o circulo
     const [cells, setCells] = useState(['', '','', '','', '','', '', '']);
 
     /* IDs */
@@ -42,6 +43,7 @@ export default function TicTacToe() {
         circleLabel.style.setProperty('--displayChangeCir', 'inline-block');
 
         setPlayerOne('circle');
+        setPlayerTwo('cross');
     }
 
     const cross = () => {//<-- If player one choose cross
@@ -59,6 +61,7 @@ export default function TicTacToe() {
         crossLabel.style.setProperty('--displayChangeCro', 'inline-block');
 
         setPlayerOne('cross');
+        setPlayerTwo('circle');
     }
 
 
@@ -67,21 +70,23 @@ export default function TicTacToe() {
     }
 
 
-    const cellsBackgroundImage = (num) => {
-        if (playerOne === 'cross') {
-            document.querySelector(`.cell_${num}`).style.cssText = `background-image: url("${crossImg}");`;
+    const cellsBackgroundImage = (arrNum, numTurn, player) => {
+        if (player === 'cross') {
+            document.querySelector(`.cell_${arrNum}`).style.cssText = `background-image: url("${crossImg}");`;
             const newCells = [...cells];
-            newCells.splice(num - 1, 1 ,'x');
+            newCells.splice(arrNum - 1, 1 ,'x');
             setCells(newCells);
+            setTurn(numTurn);
         }
-        if (playerOne === 'circle') {
-            document.querySelector(`.cell_${num}`).style.cssText = `background-image: url("${circleImg}");`;
+        if (player === 'circle') {
+            document.querySelector(`.cell_${arrNum}`).style.cssText = `background-image: url("${circleImg}");`;
             const newCells = [...cells];
-            newCells.splice(num - 1, 1 ,'o');
+            newCells.splice(arrNum - 1, 1 ,'o');
             setCells(newCells);
+            setTurn(numTurn);
         }
 
-        if (playerOne === '') {
+        if (player === '') {
             Alert();
         }
     }
@@ -90,11 +95,41 @@ export default function TicTacToe() {
 
     const handleCells = ({target}) => {
         for (let i = 0; i < idCells.length; i++) {
-            if (target.id === idCells[i]) {
-                cellsBackgroundImage(i + 1);
+            if (target.id === idCells[i] && turn === 0) {
+                cellsBackgroundImage(i + 1, 1, playerOne);//<-- It add to the box or cell the user option (it can be cross or circle)
+            }
+
+            if (target.id === idCells[i] && turn === 1) {
+                cellsBackgroundImage(i + 1, 0, playerTwo);
             }
         }
     }
+
+    function checkWinner(cells, player) {
+        const winningCombos = [    [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 4, 8],
+            [0, 3, 6],
+            [6, 4, 2],
+            [2, 5, 8],
+            [1, 4, 7]
+        ];
+    
+        return winningCombos.some(combo => {
+            return combo.every(index => cells[index] === player);
+        });
+    }
+    
+    useEffect(() => {
+        if (checkWinner(cells, 'x')) {
+            setWin('Cross');
+            alert(`El ganador es X`)
+        } else if (checkWinner(cells, 'o')) {
+            setWin('Circle');
+            alert(`El ganador es O`)
+        }
+    }, [cells, win]);
 
     return(
         <div>
