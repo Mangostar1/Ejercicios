@@ -12,11 +12,7 @@ export default function TicTacToe() {
     const [play_IA, setPlayIA] = useState(false);//<-- Usado para saber si se jugara en contra de la IA o no
     const [turn, setTurn] = useState(0);//<-- Para saber de quien es el turno actualmente
     const [playerOne, setPlayerOne] = useState('');//<-- Util para saber si el jugador 1 usara cruz o circulo
-    const [cells, setCells] = useState([
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
-    ]);
+    const [cells, setCells] = useState(['', '','', '','', '','', '', '']);
 
     /* IDs */
     const cell_1 = useId();
@@ -38,7 +34,7 @@ export default function TicTacToe() {
         window.getComputedStyle(crossLabel, '::after');
         crossLabel.style.setProperty('--displayChangeCro', 'none');
         
-        //se cambian estilos al otro input radio
+        //Add style on circle label
         const circleLabel = document.getElementById('circleLabel');
         circleLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
         
@@ -55,7 +51,7 @@ export default function TicTacToe() {
         window.getComputedStyle(circleLabel, '::after');
         circleLabel.style.setProperty('--displayChangeCir', 'none');
         
-        //se cambian estilos al otro input radio
+        //Add style on cross label
         const crossLabel = document.getElementById('crossLabel');
         crossLabel.style.cssText = `background-color: tomato; color: white; padding: 5px 5px 5px 25px;`;
         
@@ -66,13 +62,23 @@ export default function TicTacToe() {
     }
 
 
-    const Celda1 = () => {
+    const Alert = () => {
+        alert('Selecciona una opcion entre X y O por favor');
+    }
 
+
+    const cellsBackgroundImage = (num) => {
         if (playerOne === 'cross') {
-            document.querySelector('.cell_1').style.cssText = `background-image: url("${crossImg}");`;
+            document.querySelector(`.cell_${num}`).style.cssText = `background-image: url("${crossImg}");`;
+            const newCells = [...cells];
+            newCells.splice(num - 1, 1 ,'x');
+            setCells(newCells);
         }
         if (playerOne === 'circle') {
-            document.querySelector('.cell_1').style.cssText = `background-image: url("${circleImg}");`;
+            document.querySelector(`.cell_${num}`).style.cssText = `background-image: url("${circleImg}");`;
+            const newCells = [...cells];
+            newCells.splice(num - 1, 1 ,'o');
+            setCells(newCells);
         }
 
         if (playerOne === '') {
@@ -80,48 +86,14 @@ export default function TicTacToe() {
         }
     }
 
+    const idCells = [cell_1, cell_2, cell_3, cell_4, cell_5, cell_6, cell_7, cell_8, cell_9];
+
     const handleCells = ({target}) => {
-        
-        if (target.id === cell_1) {
-            console.log('seleccionaste la selda 1');
-            Celda1();
+        for (let i = 0; i < idCells.length; i++) {
+            if (target.id === idCells[i]) {
+                cellsBackgroundImage(i + 1);
+            }
         }
-
-        if (target.id === cell_2) {
-            console.log('seleccionaste la selda 2')
-        }
-
-        if (target.id === cell_3) {
-            console.log('seleccionaste la selda 3')
-        }
-
-        if (target.id === cell_4) {
-            console.log('seleccionaste la selda 4')
-        }
-
-        if (target.id === cell_5) {
-            console.log('seleccionaste la selda 5')
-        }
-
-        if (target.id === cell_6) {
-            console.log('seleccionaste la selda 6')
-        }
-
-        if (target.id === cell_7) {
-            console.log('seleccionaste la selda 7')
-        }
-
-        if (target.id === cell_8) {
-            console.log('seleccionaste la selda 8')
-        }
-
-        if (target.id === cell_9) {
-            console.log('seleccionaste la selda 9')
-        }
-    }
-
-    const Alert = () => {
-        alert('Selecciona una opcion entre X y O por favor');
     }
 
     return(
