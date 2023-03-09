@@ -9,7 +9,7 @@ export default function TicTacToe() {
     
     /* States */
     const [win, setWin] = useState('');//<-- Para saber quien de los dos jugadores gano
-    const [play_IA, setPlayIA] = useState(false);//<-- Usado para saber si se jugara en contra de la IA o no
+    const [play_IA, setPlayIA] = useState(true);//<-- Usado para saber si se jugara en contra de la IA o no
     const [turn, setTurn] = useState(0);//<-- Para saber de quien es el turno actualmente
     const [playerOne, setPlayerOne] = useState('');//<-- Util para saber si el jugador 1 usara cruz o circulo
     const [playerTwo, setPlayerTwo] = useState('');//<-- Util para saber si el jugador 1 usara cruz o circulo
@@ -25,6 +25,8 @@ export default function TicTacToe() {
     const cell_7 = useId();
     const cell_8 = useId();
     const cell_9 = useId();
+    const vsPlayer = useId();
+    const vsIA = useId();
 
     /* Functions */
 
@@ -64,6 +66,18 @@ export default function TicTacToe() {
         setPlayerTwo('circle');
     }
 
+    const handleChose = ({target}) => {
+    
+        if (target.id === vsPlayer) {
+            setPlayIA(false);
+        }
+
+        if (target.id === vsIA) {
+            setPlayIA(true);
+        }
+
+    }
+
 
     const Alert = () => {
         alert('Selecciona una opcion entre X y O por favor');
@@ -94,14 +108,20 @@ export default function TicTacToe() {
     const idCells = [cell_1, cell_2, cell_3, cell_4, cell_5, cell_6, cell_7, cell_8, cell_9];
 
     const handleCells = ({target}) => {
-        for (let i = 0; i < idCells.length; i++) {
-            if (target.id === idCells[i] && turn === 0) {
-                cellsBackgroundImage(i + 1, 1, playerOne);//<-- It add to the box or cell the user option (it can be cross or circle)
+        if (!play_IA) {
+            for (let i = 0; i < idCells.length; i++) {
+                if (target.id === idCells[i] && turn === 0) {
+                    cellsBackgroundImage(i + 1, 1, playerOne);//<-- It add to the box or cell the user option (it can be cross or circle)
+                }
+    
+                if (target.id === idCells[i] && turn === 1) {
+                    cellsBackgroundImage(i + 1, 0, playerTwo);
+                }
             }
+        }
 
-            if (target.id === idCells[i] && turn === 1) {
-                cellsBackgroundImage(i + 1, 0, playerTwo);
-            }
+        if (play_IA) {
+            //code
         }
     }
 
@@ -143,10 +163,10 @@ export default function TicTacToe() {
                         <label htmlFor="cross" id="crossLabel">Cruz</label>
                     </form>
                     <form id='vsChose'>
-                        <label htmlFor="ia">Vs IA</label>
-                        <input type="radio" name="chose" id="ia" />
-                        <label htmlFor="player">Vs Player</label>
-                        <input type="radio" name="chose" id="player" />
+                        <input type="radio" name="chose" id={vsIA} onClick={handleChose} defaultChecked/>
+                        <label htmlFor={vsIA}>Vs IA</label>
+                        <input type="radio" name="chose" id={vsPlayer} onClick={handleChose} />
+                        <label htmlFor={vsPlayer}>Vs Player</label>
                     </form>
                     <div id="tablero">
                         <div id={cell_1} className="cells cell_1" onClick={handleCells}></div>
